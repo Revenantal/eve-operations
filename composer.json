@@ -17,7 +17,8 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "nullx27/easi": "^1.0",
-        "nullx27/eveonline-socialite": "dev-master"
+        "nullx27/eveonline-socialite": "dev-master",
+        "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
