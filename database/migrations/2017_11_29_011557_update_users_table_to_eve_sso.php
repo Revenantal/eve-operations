@@ -18,7 +18,7 @@ class UpdateUsersTableToEveSso extends Migration
             // Adds
             $table->char('eve_token', 100);
             $table->char('username', 50);
-            $table->carchar('avatar', 255);
+            $table->char('avatar', 255);
             $table->softDeletes();
 
             // Drops
