@@ -7,6 +7,8 @@ use Carbon\Carbon;
 
 class Operation extends Model
 {
+    public $timestamps = false;
+    
     public function createdBy(){
         return $this->belongsTo('App\User', 'created_by', 'id');
     }
@@ -17,21 +19,5 @@ class Operation extends Model
 
     public function assignedTo(){
         return $this->belongsTo('App\User', 'assigned_to', 'id');
-    }
-
-    public function getTimeUntilAttribute()
-    {
-        $current = Carbon::now();
-        $operationTime = Carbon::parse($this->operation_at);
-        $difference = $operationTime->diffInSeconds($current);
-
-        $test = Carbon::parse($this->operation_at)->diff(Carbon::now())->format('%dD %hH %mM %sS');
-        $test = $operationTime->diffInDays($current);
-        $test = $operationTime->diffInMinutes($current);
-        
-
-
-        return $test;
-       // return gmdate('d\D H\H i\M s\S', $difference);
     }
 }
