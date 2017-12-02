@@ -21,5 +21,3 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::resource('operations', 'OperationsController');
 
-//Route::get('test', 'TestController@show');
-
