@@ -19,7 +19,7 @@
         "laravelcollective/html": "^5.5.0",
         "nullx27/easi": "^1.0",
         "nullx27/eveonline-socialite": "dev-master",
-        "zizaco/entrust": "5.2.x-dev"
+        "zizaco/entrust": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
