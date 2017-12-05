@@ -52,7 +52,7 @@ class OperationsController extends Controller
             'operation_at' => 'required|date|after:now'
         ]);
 
-        // Create Post
+        // Create Operation
         $operation = new Operation;
         $operation->name = $request->input('name');
         $operation->type = $request->input('type');
@@ -60,7 +60,8 @@ class OperationsController extends Controller
         $operation->operation_at = $request->input('operation_at');
         $operation->created_by = auth()->user()->id;
         $operation->save();
-        return redirect('/');
+
+        return redirect('/')->with('success', 'Operation added successfully!');
     }
 
     /**
