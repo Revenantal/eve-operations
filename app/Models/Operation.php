@@ -20,4 +20,8 @@ class Operation extends Model
     public function assignedTo(){
         return $this->belongsTo('App\User', 'assigned_to', 'id');
     }
+
+    public function operationAttributes(){
+        return $this->hasMany('App\OperationAttributes', 'operation_id');
+    }
 }
