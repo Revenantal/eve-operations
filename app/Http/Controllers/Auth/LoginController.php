@@ -59,6 +59,6 @@ class LoginController extends Controller
         }
 
         Auth::loginUsingId($sso_user->id, true);
-        return redirect('/');
+        return redirect('/')->with('success', 'Login successful!');
     }   
 }
