@@ -50,6 +50,9 @@
                     </div>
                 </div>
             </div>   
+            @if(count($operation->operationAttributes)) 
+                {{$operation->operationAttributes}}
+            @endif
         @endforeach
     @else 
         <div class="row">
