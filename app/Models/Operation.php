@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 
 class Operation extends Model
 {
@@ -22,6 +21,6 @@ class Operation extends Model
     }
 
     public function operationAttributes(){
-        return $this->hasMany('App\OperationAttributes', 'operation_id');
+        return $this->hasMany('App\OperationAttribute', 'operation_id');
     }
 }

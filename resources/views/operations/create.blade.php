@@ -29,13 +29,12 @@
                 <div class="form-group">
                     {{Form::label('operation_type', 'Operation Type')}}
                     {{Form::select('operation_type', [
-                                    'structure_off' => 'Structure Offensive', 
-                                    'structure_def' => 'Structure Defensive',
-                                    'coalition_off' => 'Coalition Offensive',
-                                    'coalition_def' => 'Coalition Defensive', 
-                                    'roam' => 'Roam',
-                                    'fun' => 'Fun Fleet'],
-                                    null, ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
+                                        'structure_off' => 'Structure Offensive', 
+                                        'structure_def' => 'Structure Defensive',
+                                        'roam'          => 'Roam',
+                                        'general'       => 'General Fleet',
+                                        'fun'           => 'Fun Fleet'],
+                                        null, ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
                 </div>
 
                 
@@ -46,10 +45,23 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="operation-details" style="display:none;">
         <div class="well">
-            <h2>Extended Operation Details</h2>
-            <!-- Switch statement here depending on what the user picks above -->
+            <div class="detail-group" data-op-type="fun">
+                @include('operations.parts.fun')
+            </div>
+            <div class="detail-group" data-op-type="general">
+                @include('operations.parts.general')
+            </div>
+            <div class="detail-group" data-op-type="structure_def">
+                @include('operations.parts.structure_def')
+            </div>
+            <div class="detail-group" data-op-type="structure_off">
+                @include('operations.parts.structure_off')
+            </div>
+            <div class="detail-group" data-op-type="roam">
+                @include('operations.parts.roam')
+            </div>
         </div>
 
         {{Form::submit('Create Operation', ['class'=>'btn btn-primary'])}}
@@ -57,4 +69,8 @@
 
 
  {!! Form::close() !!}
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('/js/operations.js') }}"></script>
 @endsection
