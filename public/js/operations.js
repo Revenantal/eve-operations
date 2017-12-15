@@ -3,15 +3,15 @@ $(function() {
         $detailPanel = $("#operation-details .detail-group[data-op-type='" + this.value + "'");
         if ($detailPanel.length != 0) {
             $("#operation-details .detail-group").hide();
-            $("#operation-details").show();
-            $detailPanel.show();
+            $("#operation-details").fadeIn();
+            $detailPanel.fadeIn();
         }
     });
 
     if ($('#operation_type').find(":selected").val()) {
         $opType = $('#operation_type').find(":selected").val()
-        $("#operation-details .detail-group").hide();
-        $("#operation-details").show();
-        $("#operation-details .detail-group[data-op-type='" + $opType + "'").show();
+        $("#operation-details .detail-group").fadeOut();
+        $("#operation-details").fadeIn();
+        $("#operation-details .detail-group[data-op-type='" + $opType + "'").fadeIn();
     }
 });
