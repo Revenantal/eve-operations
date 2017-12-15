@@ -1,1 +1,1 @@
-<h2>Defensive Structure Operation Details</h2>
+<h2>Structure DefensiveOperation Details</h2>
