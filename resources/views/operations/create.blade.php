@@ -62,6 +62,9 @@
             <div class="detail-group" data-op-type="roam">
                 @include('operations.parts.roam')
             </div>
+            <div class="detail-group" data-op-type="moon_mining">
+                @include('operations.parts.moon_mining')
+            </div>
         </div>
 
         {{Form::submit('Create Operation', ['class'=>'btn btn-primary'])}}
