@@ -1,4 +1,4 @@
-<h2>General Operation Details</h2>
+<h2>Moon Mining Operation Details</h2>
 <div class="form-group">
     {{Form::label('form_up', 'Form Up Location')}}
     {{Form::text('form_up', '', ['class' => 'form-control', 'placeholder' => 'Q-U96U - Evictus Command'])}}
