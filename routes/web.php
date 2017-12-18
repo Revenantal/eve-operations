@@ -15,9 +15,11 @@
 
 Route::get('/', 'HomeController@index');
 
+// Auth
 Route::get('login', 'Auth\LoginController@redirectToProvider')->name('login');
 Route::get('login/esi/callback', 'Auth\LoginController@handleProviderCallback');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
+// Operation Management
 Route::resource('operations', 'OperationsController');
-
+Route::get('/operations/parts/{part_name}', 'OperationsController@operation_form_part');
