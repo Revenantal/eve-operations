@@ -12,12 +12,12 @@
     ],
     "require": {
         "php": ">=7.0.0",
+        "eveseat/eseye": "^0.0.10",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5.0",
-        "nullx27/easi": "^1.0",
         "nullx27/eveonline-socialite": "dev-master",
         "zizaco/entrust": "dev-master"
     },

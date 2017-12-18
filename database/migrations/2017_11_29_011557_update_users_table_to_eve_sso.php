@@ -35,9 +35,16 @@ class UpdateUsersTableToEveSso extends Migration
      */
     public function down()
     {
-        $table->dropColumn('eve_token');
-        $table->dropColumn('username');
-        $table->dropColumn('deleted_at');
-        $table->dropColumn('image');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('eve_token');
+            $table->dropColumn('username');
+            $table->dropColumn('deleted_at');
+            $table->dropColumn('image');
+
+            // Reset to original table structure to prevent issues
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+        });
     }
 }
