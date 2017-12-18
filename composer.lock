@@ -4,317 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "97c8ffc8724d45bd0c1eeef8a95ae2ce",
+    "content-hash": "87aaf04c2bf4f91da8f4e2ca8a47a0b4",
     "packages": [
-        {
-            "name": "cache/adapter-common",
-            "version": "0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-cache/adapter-common.git",
-                "reference": "2adecd1375fe2ce15b1679349965d7fa73f2676b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/adapter-common/zipball/2adecd1375fe2ce15b1679349965d7fa73f2676b",
-                "reference": "2adecd1375fe2ce15b1679349965d7fa73f2676b",
-                "shasum": ""
-            },
-            "require": {
-                "cache/tag-interop": "^1.0",
-                "php": "^5.6 || ^7.0",
-                "psr/cache": "^1.0",
-                "psr/log": "^1.0",
-                "psr/simple-cache": "^1.0"
-            },
-            "require-dev": {
-                "cache/integration-tests": "^0.16",
-                "phpunit/phpunit": "^4.0 || ^5.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cache\\Adapter\\Common\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Aaron Scherer",
-                    "email": "aequasi@gmail.com",
-                    "homepage": "https://github.com/aequasi"
-                },
-                {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com",
-                    "homepage": "https://github.com/nyholm"
-                }
-            ],
-            "description": "Common classes for PSR-6 adapters",
-            "homepage": "http://www.php-cache.com/en/latest/",
-            "keywords": [
-                "cache",
-                "psr-6",
-                "tag"
-            ],
-            "time": "2017-03-13T08:24:04+00:00"
-        },
-        {
-            "name": "cache/array-adapter",
-            "version": "0.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-cache/array-adapter.git",
-                "reference": "2877999aa087bbe591c8591d22dd88c530e01b9f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/array-adapter/zipball/2877999aa087bbe591c8591d22dd88c530e01b9f",
-                "reference": "2877999aa087bbe591c8591d22dd88c530e01b9f",
-                "shasum": ""
-            },
-            "require": {
-                "cache/adapter-common": "^0.4",
-                "cache/hierarchical-cache": "^0.4",
-                "php": "^5.6 || ^7.0",
-                "psr/cache": "^1.0",
-                "psr/simple-cache": "^1.0"
-            },
-            "provide": {
-                "psr/cache-implementation": "^1.0"
-            },
-            "require-dev": {
-                "cache/integration-tests": "^0.16",
-                "phpunit/phpunit": "^4.0 || ^5.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.6-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cache\\Adapter\\PHPArray\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Aaron Scherer",
-                    "email": "aequasi@gmail.com",
-                    "homepage": "https://github.com/aequasi"
-                },
-                {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com",
-                    "homepage": "https://github.com/nyholm"
-                }
-            ],
-            "description": "A PSR-6 cache implementation using a php array. This implementation supports tags",
-            "homepage": "http://www.php-cache.com/en/latest/",
-            "keywords": [
-                "array",
-                "cache",
-                "psr-6",
-                "tag"
-            ],
-            "time": "2017-03-13T09:25:46+00:00"
-        },
-        {
-            "name": "cache/hierarchical-cache",
-            "version": "0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-cache/hierarchical-cache.git",
-                "reference": "201c6d67ff451642ce62d3bab193936361618776"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/hierarchical-cache/zipball/201c6d67ff451642ce62d3bab193936361618776",
-                "reference": "201c6d67ff451642ce62d3bab193936361618776",
-                "shasum": ""
-            },
-            "require": {
-                "cache/adapter-common": "^0.4",
-                "php": "^5.6 || ^7.0",
-                "psr/cache": "^1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.0 || ^5.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cache\\Hierarchy\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Aaron Scherer",
-                    "email": "aequasi@gmail.com",
-                    "homepage": "https://github.com/aequasi"
-                },
-                {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com",
-                    "homepage": "https://github.com/nyholm"
-                }
-            ],
-            "description": "A helper trait and interface to your PSR-6 cache to support hierarchical keys.",
-            "homepage": "http://www.php-cache.com/en/latest/",
-            "keywords": [
-                "cache",
-                "hierarchical",
-                "hierarchy",
-                "psr-6"
-            ],
-            "time": "2017-03-13T10:43:18+00:00"
-        },
-        {
-            "name": "cache/simple-cache-bridge",
-            "version": "0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-cache/simple-cache-bridge.git",
-                "reference": "7f4dbf0a95422309b228b6d3568dd899e532f426"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/simple-cache-bridge/zipball/7f4dbf0a95422309b228b6d3568dd899e532f426",
-                "reference": "7f4dbf0a95422309b228b6d3568dd899e532f426",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6 || ^7.0",
-                "psr/cache": "^1.0",
-                "psr/simple-cache": "^1.0"
-            },
-            "provide": {
-                "psr/simple-cache-implementation": "^1.0"
-            },
-            "require-dev": {
-                "cache/integration-tests": "^0.16",
-                "mockery/mockery": "^0.9",
-                "phpunit/phpunit": "^4.0 || ^5.1",
-                "symfony/cache": "^3.2"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cache\\Bridge\\SimpleCache\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Magnus Nordlander",
-                    "email": "magnus@fervo.se",
-                    "homepage": "https://github.com/magnusnordlander"
-                }
-            ],
-            "description": "A PSR-6 bridge to PSR-16. This will make any PSR-6 cache compatible with SimpleCache.",
-            "homepage": "http://www.php-cache.com/en/latest/",
-            "keywords": [
-                "Bridge",
-                "cache",
-                "psr-16",
-                "psr-6"
-            ],
-            "time": "2017-03-13T10:43:18+00:00"
-        },
-        {
-            "name": "cache/tag-interop",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-cache/tag-interop.git",
-                "reference": "c7496dd81530f538af27b4f2713cde97bc292832"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/tag-interop/zipball/c7496dd81530f538af27b4f2713cde97bc292832",
-                "reference": "c7496dd81530f538af27b4f2713cde97bc292832",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5 || ^7.0",
-                "psr/cache": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cache\\TagInterop\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com",
-                    "homepage": "https://github.com/nyholm"
-                },
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com",
-                    "homepage": "https://github.com/nicolas-grekas"
-                }
-            ],
-            "description": "Framework interoperable interfaces for tags",
-            "homepage": "http://www.php-cache.com/en/latest/",
-            "keywords": [
-                "cache",
-                "psr",
-                "psr6",
-                "tag"
-            ],
-            "time": "2017-03-13T09:14:27+00:00"
-        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -572,46 +263,55 @@
             "time": "2017-11-14T20:44:03+00:00"
         },
         {
-            "name": "fetch/array-utils",
-            "version": "0.1.1",
+            "name": "eveseat/eseye",
+            "version": "0.0.10",
             "source": {
                 "type": "git",
-                "url": "https://github.com/fetch/php-array-utils.git",
-                "reference": "459d9d7a77f58b7c2101611d464f4ac34fd8dd50"
+                "url": "https://github.com/eveseat/eseye.git",
+                "reference": "1dafe7ecb067554cc4bb7c1ebdf1a8fa44adb2c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fetch/php-array-utils/zipball/459d9d7a77f58b7c2101611d464f4ac34fd8dd50",
-                "reference": "459d9d7a77f58b7c2101611d464f4ac34fd8dd50",
+                "url": "https://api.github.com/repos/eveseat/eseye/zipball/1dafe7ecb067554cc4bb7c1ebdf1a8fa44adb2c9",
+                "reference": "1dafe7ecb067554cc4bb7c1ebdf1a8fa44adb2c9",
                 "shasum": ""
             },
-            "require-dev": {
-                "phpunit/phpunit": "~4.5"
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "monolog/monolog": "^1.22",
+                "nesbot/carbon": "^1.21",
+                "php": ">= 7.0",
+                "predis/predis": "^1.1"
             },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "mikey179/vfsstream": "~1",
+                "phpunit/phpunit": "^5.7"
+            },
+            "bin": [
+                "bin/tokengenerator"
+            ],
             "type": "library",
             "autoload": {
+                "psr-4": {
+                    "Seat\\Eseye\\": "src/"
+                },
                 "files": [
-                    "lib/array.php"
+                    "src/Helpers/helpers.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "GPL-2.0"
             ],
             "authors": [
                 {
-                    "name": "Koen Punt",
-                    "email": "koen@fetch.nl",
-                    "homepage": "https://github.com/koenpunt"
+                    "name": "Leon Jacobs",
+                    "email": "leonja511@gmail.com"
                 }
             ],
-            "description": "Array utility methods, inspired by Ruby's array methods",
-            "homepage": "https://github.com/fetch/php-array-utils",
-            "keywords": [
-                "array",
-                "utils"
-            ],
-            "time": "2015-11-14T11:40:19+00:00"
+            "description": "A Standalone PHP ESI (EVE Swagger Interface) Client Library",
+            "time": "2017-09-20T15:13:08+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -1634,111 +1334,6 @@
             "time": "2017-11-04T11:48:34+00:00"
         },
         {
-            "name": "nullx27/easi",
-            "version": "1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nullx27/easi.git",
-                "reference": "4020bdb44fced82a1e9f2a198f5334dd2a34e995"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nullx27/easi/zipball/4020bdb44fced82a1e9f2a198f5334dd2a34e995",
-                "reference": "4020bdb44fced82a1e9f2a198f5334dd2a34e995",
-                "shasum": ""
-            },
-            "require": {
-                "cache/array-adapter": "^0.5.0",
-                "cache/simple-cache-bridge": "^0.1.1",
-                "fetch/array-utils": "^0.1.1",
-                "nesbot/carbon": "^1.22",
-                "nullx27/esi-php": "^1.1",
-                "php": "^7.0",
-                "psr/cache": "^1.0",
-                "psr/log": "^1.0",
-                "psr/simple-cache": "^1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "nullx27\\Easi\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andre Peiffer",
-                    "email": "necrotex@gmail.com"
-                }
-            ],
-            "description": "PHP Interface for EVE Onlines ESI Api",
-            "keywords": [
-                "api",
-                "esi",
-                "eve-online",
-                "lib",
-                "php"
-            ],
-            "time": "2017-03-27T13:44:06+00:00"
-        },
-        {
-            "name": "nullx27/esi-php",
-            "version": "1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nullx27/esi-php.git",
-                "reference": "894e256b67272817ad5efbaa21c69cf0a28c2d70"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nullx27/esi-php/zipball/894e256b67272817ad5efbaa21c69cf0a28c2d70",
-                "reference": "894e256b67272817ad5efbaa21c69cf0a28c2d70",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "~1.12",
-                "phpunit/phpunit": "~4.8",
-                "satooshi/php-coveralls": "~1.0",
-                "squizlabs/php_codesniffer": "~2.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "nullx27\\ESI\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "Swagger and contributors",
-                    "homepage": "https://github.com/swagger-api/swagger-codegen"
-                }
-            ],
-            "description": "EVE Online ESI Api Client for PHP",
-            "keywords": [
-                "api",
-                "php",
-                "sdk",
-                "swagger"
-            ],
-            "time": "2017-03-27T13:05:55+00:00"
-        },
-        {
             "name": "nullx27/eveonline-socialite",
             "version": "dev-master",
             "source": {
@@ -1835,31 +1430,33 @@
             "time": "2017-09-27T21:40:39+00:00"
         },
         {
-            "name": "psr/cache",
-            "version": "1.0.1",
+            "name": "predis/predis",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/php-fig/cache.git",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
+                "url": "https://github.com/nrk/predis.git",
+                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/f0210e38881631afeafb56ab43405a92cafd9fd1",
+                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-curl": "Allows access to Webdis when paired with phpiredis",
+                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "Psr\\Cache\\": "src/"
+                    "Predis\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1868,17 +1465,19 @@
             ],
             "authors": [
                 {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net"
                 }
             ],
-            "description": "Common interface for caching libraries",
+            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
+            "homepage": "http://github.com/nrk/predis",
             "keywords": [
-                "cache",
-                "psr",
-                "psr-6"
+                "nosql",
+                "predis",
+                "redis"
             ],
-            "time": "2016-08-06T20:24:11+00:00"
+            "time": "2016-06-16T16:22:20+00:00"
         },
         {
             "name": "psr/container",
@@ -3197,16 +2796,16 @@
         },
         {
             "name": "zizaco/entrust",
-            "version": "5.2.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "3623cc052937d9e62543402b50f24065720d44b9"
+                "reference": "ba9241426f9c518982d868e2cbac381a9581d802"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/3623cc052937d9e62543402b50f24065720d44b9",
-                "reference": "3623cc052937d9e62543402b50f24065720d44b9",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/ba9241426f9c518982d868e2cbac381a9581d802",
+                "reference": "ba9241426f9c518982d868e2cbac381a9581d802",
                 "shasum": ""
             },
             "require": {
@@ -3222,6 +2821,16 @@
                 "sami/sami": "dev-master"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Zizaco\\Entrust\\EntrustServiceProvider"
+                    ],
+                    "aliases": {
+                        "Entrust": "Zizaco\\Entrust\\EntrustFacade"
+                    }
+                }
+            },
             "autoload": {
                 "classmap": [
                     "src/commands"
@@ -3261,7 +2870,7 @@
                 "permission",
                 "roles"
             ],
-            "time": "2016-12-29T06:25:06+00:00"
+            "time": "2017-11-13T23:46:19+00:00"
         }
     ],
     "packages-dev": [
