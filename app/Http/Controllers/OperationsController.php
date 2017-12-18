@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Operation;
+use App\OperationAttribute;
 
 class OperationsController extends Controller
 {
@@ -46,21 +47,36 @@ class OperationsController extends Controller
      */
     public function store(Request $request)
     {
+        //https://laracasts.com/discuss/channels/laravel/laravel-validation-rules-if-field-empty-another-field-required
         $this->validate($request, [
             'name' => 'required',
-            'type' => 'required',
+            'operation_type' => 'required',
             'operation_at' => 'required|date|after:now'
         ]);
+        
 
-        // Create Post
+        // Create Operation
         $operation = new Operation;
         $operation->name = $request->input('name');
-        $operation->type = $request->input('type');
+        $operation->type = $request->input('operation_type');
         $operation->assigned_to = $request->input('assigned_to');
         $operation->operation_at = $request->input('operation_at');
         $operation->created_by = auth()->user()->id;
         $operation->save();
-        return redirect('/');
+
+
+
+        foreach ($request->input() as $key => $value) {
+            if (strpos($key, 'attr_') === 0 && $value != null) {
+                $operationAttribute = new OperationAttribute;
+                $operationAttribute->operation_id = $operation->id;
+                $operationAttribute->name = $key;
+                $operationAttribute->value = $value;
+                $operationAttribute->save();
+            }
+        }
+
+        return redirect('/')->with('success', 'Operation added successfully!');
     }
 
     /**
@@ -106,5 +122,9 @@ class OperationsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function operation_form_part($part_name) {
+        return view('operations.parts.' . $part_name)->render();
     }
 }
