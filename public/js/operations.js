@@ -1,17 +1,29 @@
 $(function() {
     $("#operation_type").change(function() {
-        $detailPanel = $("#operation-details .detail-group[data-op-type='" + this.value + "'");
-        if ($detailPanel.length != 0) {
-            $("#operation-details .detail-group").hide();
-            $("#operation-details").fadeIn();
-            $detailPanel.fadeIn();
-        }
+        $detailPanel = $("#detail-panel");
+        $('#operation-details').fadeOut('fast');
+        $.get(
+            "/operations/parts/" + this.value,
+            function (data) {
+                $detailPanel.html(data);
+            }
+        )        
+        .done(function( data ) {
+            $('#operation-details').slideDown('fast');
+        });
     });
 
     if ($('#operation_type').find(":selected").val()) {
-        $opType = $('#operation_type').find(":selected").val()
-        $("#operation-details .detail-group").fadeOut();
-        $("#operation-details").fadeIn();
-        $("#operation-details .detail-group[data-op-type='" + $opType + "'").fadeIn();
+        $opType = $('#operation_type').find(":selected").val();
+        $.get(
+            "/operations/parts/" + $opType,
+            function (data) {
+                $('#operation-details').fadeOut('fast');
+                $('#detail-panel').html(data);
+            }
+        )
+        .done(function( data ) {
+            $('#operation-details').slideDown('fast');
+        });
     }
 });
