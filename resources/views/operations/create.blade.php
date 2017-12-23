@@ -29,7 +29,8 @@
                                         'structure_def' => 'Structure Defensive',
                                         'roam'          => 'Roam',
                                         'general'       => 'General Fleet',
-                                        'fun'           => 'Fun Fleet'],
+                                        'fun'           => 'Fun Fleet',
+                                        'moon_mining'   => 'Moon Mining'],
                                         null, ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
                 </div>
                 <div class="form-group">

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use User\Auth;
-use nullx27\Easi\Easi;
 use App\Operation;
 
 

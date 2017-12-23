@@ -16,6 +16,10 @@
     {{Form::text('attr_estimated_duration', '', ['class' => 'form-control', 'placeholder' => '2 hours'])}}
 </div>
 <div class="form-group">
+        {{Form::label('attr_structure_location', 'Structure location')}}
+        {{Form::text('attr_structure_location', '', ['class' => 'form-control', 'placeholder' => 'WFC-MY - Structure Name'])}}
+</div>
+<div class="form-group">
     {{Form::label('attr_structure_corp', 'Structure Corporation Owners')}}
     {{Form::text('attr_structure_corp', '', ['class' => 'form-control', 'placeholder' => 'ExDominion'])}}
 </div>
