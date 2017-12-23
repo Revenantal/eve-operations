@@ -23,4 +23,35 @@ class Operation extends Model
     public function operationAttributes(){
         return $this->hasMany('App\OperationAttribute', 'operation_id');
     }
+
+    public function friendlyType() {
+        $friendlyType = "";
+
+        switch ($this->type) {
+            case 'structure_off':
+                $friendlyType = 'Structure Offensive';
+                break;
+            case 'structure_def':
+            $friendlyType = 'Structure Defensive';
+                break;
+            case 'roam':
+                $friendlyType = 'Roam';
+                break;
+            case 'general':
+                $friendlyType = 'General Fleet';
+                break;
+            case 'fun':
+                $friendlyType = 'Fun Fleet';
+                break;
+            case 'moon_mining':
+                $friendlyType = 'Moon Mining';
+                break;
+        }
+
+        return $friendlyType;
+    }
+
+    public function keyedAttributes() {
+        return $this->operationAttributes->keyBy('name');
+    }
 }
