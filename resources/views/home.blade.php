@@ -10,10 +10,10 @@
 </div>
 
 <div class="container">
-    <div class="panel-group">
+    <div class="panel-group operations">
         @if(count($operations) > 0)
             @foreach($operations as $operation)
-                <div class="panel panel-default">
+                <div class="panel panel-default operation">
                     <div class="panel-body">
                         <a data-toggle="collapse" href="#op-{{$operation->id}}" aria-expanded="false" aria-controls="op-{{$operation->id}}">
                             <div class="row">
