@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Operation;
 use App\OperationAttribute;
+use App\User;
 
 class OperationsController extends Controller
 {
@@ -55,11 +56,13 @@ class OperationsController extends Controller
         ]);
         
 
+        // Get User assigned to operation (eventually change this to something more reliable)
+        $assignedUser = User::where('username', $request->input('assigned_to'))->first();
         // Create Operation
         $operation = new Operation;
         $operation->name = $request->input('name');
         $operation->type = $request->input('operation_type');
-        $operation->assigned_to = $request->input('assigned_to');
+        $operation->assigned_to = $assignedUser->id;
         $operation->operation_at = $request->input('operation_at');
         $operation->created_by = auth()->user()->id;
         $operation->save();
