@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"  href="{{ mix('/css/flatpickr.css') }}">
 </head>
 <body>
     <div id="app">
