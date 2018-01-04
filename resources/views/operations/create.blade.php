@@ -34,8 +34,8 @@
                                         null, ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
                 </div>
                 <div class="form-group">
-                    {{Form::label('operation_at', 'Operation Form Up')}}<span class="text-danger">*</span> <small>When the timer comes out.</small>
-                    {{Form::text('operation_at', '', ['class' => 'form-control', 'placeholder' => 'yyyy/mm/dd hh:mm:ss'])}}
+                    {{Form::label('operation_at', 'Operation Form Up')}}<span class="text-danger">*</span> <small>When the timer comes out and use your local time.</small>
+                    {{Form::text('operation_at', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Date...', 'data-id' => 'datetime'])}}
                 </div>
         </div>
     </div>
