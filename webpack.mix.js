@@ -12,5 +12,8 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
-    .styles('node_modules/flatpickr/dist/flatpickr.css', 'public/css/flatpickr.css');
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .styles('node_modules/flatpickr/dist/flatpickr.css', 'public/css')
+    .js('node_modules/flatpickr/dist/flatpickr.js', 'public/js')
+    .js('resources/assets/js/operations.js', 'public/js')
+    .js('resources/assets/js/home.js', 'public/js');
