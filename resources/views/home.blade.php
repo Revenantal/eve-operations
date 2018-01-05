@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mb-3">
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Upcoming Operations</h1>
@@ -9,12 +9,12 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="panel-group operations">
+<div class="container mb-3">
+    <div class="operations">
         @if(count($operations) > 0)
             @foreach($operations as $operation)
-                <div class="panel panel-default operation">
-                    <div class="panel-body">
+                <div class="card mb-3 operation">
+                    <div class="card-body">
                         <a data-toggle="collapse" href="#op-{{$operation->id}}" aria-expanded="false" aria-controls="op-{{$operation->id}}">
                             <div class="row">
                                 <div class="col-sm-1">
@@ -22,9 +22,9 @@
                                 </div>
                                 <div class="col-sm-1">
                                     @if($operation->assignedTo)
-                                        <img src="{{$operation->assignedTo->avatar}}" class="img-responsive" title="{{$operation->assignedTo->username}} is assigned to this operation">
+                                        <img src="{{$operation->assignedTo->avatar}}" class="img-fluid" title="{{$operation->assignedTo->username}} is assigned to this operation">
                                     @else
-                                        <img src="{{URL::asset('/images/no-fc.png')}}" class="img-responsive" title="No one is assigned to this operation">
+                                        <img src="{{URL::asset('/images/no-fc.png')}}" class="img-fluid" title="No one is assigned to this operation">
                                     @endif
                                 </div>
                                 <div class="col-sm-5">
@@ -51,100 +51,99 @@
                         </a>
                         <div class="row collapse" id="op-{{$operation->id}}">
                             <div class="col-sm-12">
-                                <div class="well clearfix">
-                                    <div class="row">
-                                        @if(count($operation->operationAttributes))
-                                            <div class="col-sm-7">
-                                                <h3>Operation Details</h3>
-                                                <div class="row">
-                                                    @if (isset($operation->keyedAttributes()['attr_ship_types']->value))
-                                                        <div class="col-sm-4">
-                                                            <strong>Ship Types:</strong> 
-                                                        </div>
-                                                        <div class="col-sm-8">  
-                                                            {{$operation->keyedAttributes()['attr_ship_types']->value}}
-                                                        </div>
-                                                    @endif
-        
-                                                    @if (isset($operation->keyedAttributes()['attr_voice_comms']->value))
-                                                        <div class="col-sm-4">
-                                                            <strong>Voice Coms:</strong> 
-                                                        </div>
-                                                        <div class="col-sm-8">  
-                                                            {{$operation->keyedAttributes()['attr_voice_comms']->value}}
-                                                        </div>
-                                                    @endif
-        
-                                                    @if (isset($operation->keyedAttributes()['attr_form_up']->value))
-                                                        <div class="col-sm-4">
-                                                            <strong>Form Up Location:</strong> 
-                                                        </div>
-                                                        <div class="col-sm-8">  
-                                                            {{$operation->keyedAttributes()['attr_form_up']->value}}
-                                                        </div>
-                                                    @endif
-        
-                                                    @if (isset($operation->keyedAttributes()['attr_estimated_duration']->value))
-                                                        <div class="col-sm-4">
-                                                            <strong>Est. Duration:</strong> 
-                                                        </div>
-                                                        <div class="col-sm-8">  
-                                                            {{$operation->keyedAttributes()['attr_estimated_duration']->value}}
-                                                        </div>
-                                                    @endif
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            @if(count($operation->operationAttributes))
+                                                <div class="col-sm-7">
+                                                    <h3>Operation Details</h3>
+                                                    <div class="row">
+                                                        @if (isset($operation->keyedAttributes()['attr_ship_types']->value))
+                                                            <div class="col-sm-4">
+                                                                <strong>Ship Types:</strong> 
+                                                            </div>
+                                                            <div class="col-sm-8">  
+                                                                {{$operation->keyedAttributes()['attr_ship_types']->value}}
+                                                            </div>
+                                                        @endif
+            
+                                                        @if (isset($operation->keyedAttributes()['attr_voice_comms']->value))
+                                                            <div class="col-sm-4">
+                                                                <strong>Voice Coms:</strong> 
+                                                            </div>
+                                                            <div class="col-sm-8">  
+                                                                {{$operation->keyedAttributes()['attr_voice_comms']->value}}
+                                                            </div>
+                                                        @endif
+            
+                                                        @if (isset($operation->keyedAttributes()['attr_form_up']->value))
+                                                            <div class="col-sm-4">
+                                                                <strong>Form Up Location:</strong> 
+                                                            </div>
+                                                            <div class="col-sm-8">  
+                                                                {{$operation->keyedAttributes()['attr_form_up']->value}}
+                                                            </div>
+                                                        @endif
+            
+                                                        @if (isset($operation->keyedAttributes()['attr_estimated_duration']->value))
+                                                            <div class="col-sm-4">
+                                                                <strong>Est. Duration:</strong> 
+                                                            </div>
+                                                            <div class="col-sm-8">  
+                                                                {{$operation->keyedAttributes()['attr_estimated_duration']->value}}
+                                                            </div>
+                                                        @endif
 
-                                                    @if (isset($operation->keyedAttributes()['attr_structure_location']->value))
-                                                        <div class="col-sm-4">
-                                                            <strong>Struc. Location:</strong> 
-                                                        </div>
-                                                        <div class="col-sm-8">  
-                                                            {{$operation->keyedAttributes()['attr_structure_location']->value}}
-                                                        </div>
-                                                    @endif
+                                                        @if (isset($operation->keyedAttributes()['attr_structure_location']->value))
+                                                            <div class="col-sm-4">
+                                                                <strong>Struc. Location:</strong> 
+                                                            </div>
+                                                            <div class="col-sm-8">  
+                                                                {{$operation->keyedAttributes()['attr_structure_location']->value}}
+                                                            </div>
+                                                        @endif
 
-                                                    @if (isset($operation->keyedAttributes()['attr_structure_corp']->value) || isset($operation->keyedAttributes()['attr_structure_alliance']->value))
-                                                        <div class="col-sm-4">
-                                                            <strong>Owners:</strong> 
-                                                        </div>
-                                                        <div class="col-sm-8">  
-                                                            <!-- Gotta be a better way to clean this up -->
-                                                            @if (isset($operation->keyedAttributes()['attr_structure_corp']->value))
-                                                                {{$operation->keyedAttributes()['attr_structure_corp']->value}}
-                                                            @endif
-                                                            @if (isset($operation->keyedAttributes()['attr_structure_alliance']->value))
+                                                        @if (isset($operation->keyedAttributes()['attr_structure_corp']->value) || isset($operation->keyedAttributes()['attr_structure_alliance']->value))
+                                                            <div class="col-sm-4">
+                                                                <strong>Owners:</strong> 
+                                                            </div>
+                                                            <div class="col-sm-8">  
+                                                                <!-- Gotta be a better way to clean this up -->
                                                                 @if (isset($operation->keyedAttributes()['attr_structure_corp']->value))
-                                                                    <br>
+                                                                    {{$operation->keyedAttributes()['attr_structure_corp']->value}}
                                                                 @endif
-                                                                {{$operation->keyedAttributes()['attr_structure_alliance']->value}}
-                                                            @endif
-                                                        </div>
-                                                    @endif
+                                                                @if (isset($operation->keyedAttributes()['attr_structure_alliance']->value))
+                                                                    @if (isset($operation->keyedAttributes()['attr_structure_corp']->value))
+                                                                        <br>
+                                                                    @endif
+                                                                    {{$operation->keyedAttributes()['attr_structure_alliance']->value}}
+                                                                @endif
+                                                            </div>
+                                                        @endif
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-5">
-                                                <h3>Notes</h3>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-body">{{$operation->keyedAttributes()['attr_notes']->value}}</div>
+                                                <div class="col-sm-5">
+                                                    <h3>Notes</h3>
+                                                    <div class="card">
+                                                        <div class="card-body">{{$operation->keyedAttributes()['attr_notes']->value}}</div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        @else
-                                            <div class="col-sm-12">
-                                                <p>No details to share today!</p>
-                                            </div>
-                                        @endif
+                                            @else
+                                                <div class="col-sm-12">
+                                                    No details to share today!
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <p>Posted by {{$operation->createdBy->username}} on {{$operation->created_at}}
-                                    @if($operation->modifiedBy)
-                                        - Modified by {{$operation->modifiedBy->username}} on {{$operation->modified_on}}
-                                    @endif
-                                </p>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Posted by {{$operation->createdBy->username}} on {{$operation->created_at}}
+                            @if($operation->modifiedBy)
+                                - Modified by {{$operation->modifiedBy->username}} on {{$operation->modified_on}}
+                            @endif
                     </div>
                 </div>
             @endforeach
