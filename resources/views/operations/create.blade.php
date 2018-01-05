@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('styles')
+    <link rel="stylesheet" type="text/css"  href="{{ mix('/css/flatpickr.css') }}">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -13,7 +17,6 @@
     <div class="container">
         <div class="well">
             <h2>Basic Operation Details</h2>
-        
                 <div class="form-group">
                     {{Form::label('name', 'Operation Name')}}<span class="text-danger">*</span>
                     {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Imicus Doctrine'])}}
@@ -34,7 +37,7 @@
                                         null, ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
                 </div>
                 <div class="form-group">
-                    {{Form::label('operation_at', 'Operation Form Up')}}<span class="text-danger">*</span> <small>When the timer comes out and use your local time.</small>
+                    {{Form::label('operation_at', 'Operation Form Up')}}<span class="text-danger">*</span> <small>When the fleet should form (Eve Time)</small>
                     {{Form::text('operation_at', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Date...', 'data-id' => 'datetime'])}}
                 </div>
         </div>
@@ -53,5 +56,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('/js/operations.js') }}"></script>
+    <script src="{{ mix('/js/flatpickr.js') }}"></script>
+    <script src="{{ mix('/js/operations.js') }}"></script>
 @endsection

@@ -24,4 +24,3 @@ const app = new Vue({
 export default {
   components: { Countdown }
 }
-
