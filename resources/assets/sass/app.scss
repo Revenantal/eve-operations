@@ -2,6 +2,14 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600");
 
+// Font Awesome
+@import "node_modules/@fortawesome/fontawesome-free-webfonts/scss/fontawesome.scss";
+@import "node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fontawesome.scss";
+@import "node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-brands.scss";
+@import "node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-light.scss";
+@import "node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-regular.scss";
+@import "node_modules/@fortawesome/fontawesome-pro-webfonts/scss/fa-solid.scss";
+
 // Variables
 @import "variables";
 
