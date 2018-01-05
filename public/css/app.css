@@ -8350,10 +8350,6 @@ button.close {
   }
 }
 
-html {
-  margin-left: calc(100vw - 100%);
-}
-
 body {
   font-family: 'Nunito', sans-serif;
 }
