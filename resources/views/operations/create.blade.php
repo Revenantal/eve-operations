@@ -38,7 +38,6 @@
                                                 'structure_off' => 'Structure Offensive', 
                                                 'structure_def' => 'Structure Defensive',
                                                 'roam'          => 'Roam',
-                                                'general'       => 'General Fleet',
                                                 'fun'           => 'Fun Fleet',
                                                 'moon_mining'   => 'Moon Mining'],
                                                 null, ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
@@ -46,8 +45,27 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            {{Form::label('operation_at', 'Operation Form Up')}}<span class="text-danger">*</span> <small>When the fleet should form (Eve Time)</small>
+                            {{Form::label('operation_at', 'Operation Form Up')}}<span class="text-danger">*</span> <small>(Eve Time)</small>
                             {{Form::text('operation_at', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Eve Date and Time', 'data-id' => 'datetime'])}}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{Form::label('attr_priority', 'Operation Priority')}}<span class="text-danger">*</span>
+                            {{Form::select('attr_priority', [
+                                                'general'   => 'General',
+                                                'strat'     => 'Strategic Operation',
+                                                'cta'       => 'Call To Arms' ],
+                                                null, ['class' => 'form-control'])}}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{Form::label('attr_srp', 'Ship Replacement Program')}}<span class="text-danger">*</span><br>
+                            {{Form::select('attr_srp', [
+                                                false   => 'Denied',
+                                                true     => 'Approved' ],
+                                                null, ['class' => 'form-control'])}}
                         </div>
                     </div>
                 </div>

@@ -16679,6 +16679,10 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
+.content {
+  margin-top: 30px;
+}
+
 h1,
 h2,
 h3,
@@ -16690,11 +16694,11 @@ p {
 }
 
 .operations .operation {
-  -webkit-transition: box-shadow .2s ease-out;
-  -webkit-transition: -webkit-box-shadow .2s ease-out;
-  transition: -webkit-box-shadow .2s ease-out;
-  transition: box-shadow .2s ease-out;
-  transition: box-shadow .2s ease-out, -webkit-box-shadow .2s ease-out;
+  -webkit-transition: box-shadow .2s ease;
+  -webkit-transition: -webkit-box-shadow .2s ease;
+  transition: -webkit-box-shadow .2s ease;
+  transition: box-shadow .2s ease;
+  transition: box-shadow .2s ease, -webkit-box-shadow .2s ease;
 }
 
 .operations .operation:hover {
@@ -16706,7 +16710,26 @@ p {
   text-decoration: none;
 }
 
-.content {
-  margin-top: 30px;
+.operations .icon {
+  width: 28px;
+  height: 28px;
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);
+  border-radius: 2px;
+  -webkit-transition: box-shadow .2s ease, transform .2s ease;
+  -webkit-transition: -webkit-box-shadow .2s ease, -webkit-transform .2s ease;
+  transition: -webkit-box-shadow .2s ease, -webkit-transform .2s ease;
+  transition: box-shadow .2s ease, transform .2s ease;
+  transition: box-shadow .2s ease, transform .2s ease, -webkit-box-shadow .2s ease, -webkit-transform .2s ease;
+}
+
+.operations .icon:hover {
+  z-index: 10;
+  -webkit-transform: scale(1.75, 1.75);
+  transform: scale(1.75, 1.75);
+  -webkit-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  position: inherit;
 }
 

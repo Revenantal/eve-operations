@@ -37,9 +37,6 @@ class Operation extends Model
             case 'roam':
                 $friendlyType = 'Roam';
                 break;
-            case 'general':
-                $friendlyType = 'General Fleet';
-                break;
             case 'fun':
                 $friendlyType = 'Fun Fleet';
                 break;
