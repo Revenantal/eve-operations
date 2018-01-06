@@ -971,7 +971,6 @@ module.exports = __webpack_require__(43);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -993,10 +992,6 @@ Vue.component('Countdown', __webpack_require__(39));
 
 var app = new Vue({
   el: '#app'
-});
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  components: { Countdown: Countdown }
 });
 
 /***/ }),

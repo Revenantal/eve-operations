@@ -4,7 +4,7 @@
 <div class="container mb-3">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>Upcoming Operations <i class="fal fa-user"></i></h1>
+            <h1>Upcoming Operations</h1>
         </div>
     </div>
 </div>
