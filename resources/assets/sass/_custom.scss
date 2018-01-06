@@ -1,3 +1,8 @@
+html {
+    margin-right: calc(-1 * (100vw - 100%));
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Nunito', sans-serif;
 }
