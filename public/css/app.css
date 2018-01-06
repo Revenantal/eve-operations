@@ -16675,6 +16675,11 @@ a.text-dark:hover {
   visibility: hidden !important;
 }
 
+html {
+  margin-right: calc(-1 * (100vw - 100%));
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Nunito', sans-serif;
 }
