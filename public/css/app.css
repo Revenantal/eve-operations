@@ -16711,11 +16711,19 @@ p {
           box-shadow: 0px 0px 20px 0px #b9b9b9;
 }
 
+.operations .operation.cta {
+  background-color: rgba(255, 0, 0, 0.15);
+}
+
+.operations .operation.strat {
+  background-color: rgba(255, 255, 0, 0.15);
+}
+
 .operations .operation > .card-body a:hover {
   text-decoration: none;
 }
 
-.operations .icon {
+.operations .operation .icon {
   width: 28px;
   height: 28px;
   -webkit-transform: scale(1, 1);
@@ -16728,7 +16736,7 @@ p {
   transition: box-shadow .2s ease, transform .2s ease, -webkit-box-shadow .2s ease, -webkit-transform .2s ease;
 }
 
-.operations .icon:hover {
+.operations .operation .icon:hover {
   z-index: 10;
   -webkit-transform: scale(1.75, 1.75);
   transform: scale(1.75, 1.75);
