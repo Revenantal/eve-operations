@@ -16,6 +16,11 @@ $(function() {
             }
         )        
         .done(function( data ) {
+            $("#operation-details .flatpickr").flatpickr({
+                enableTime: true, 
+                minDate: "today", 
+                time_24hr: true
+            });
             $('#operation-details').slideDown('fast');
         });
     });
@@ -30,6 +35,11 @@ $(function() {
             }
         )
         .done(function( data ) {
+            $("#operation-details .flatpickr").flatpickr({
+                enableTime: true, 
+                minDate: "today", 
+                time_24hr: true
+            });
             $('#operation-details').slideDown('fast');
         });
     }

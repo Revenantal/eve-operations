@@ -90,6 +90,11 @@ $(function () {
         $.get("/operations/parts/" + this.value, function (data) {
             $detailPanel.html(data);
         }).done(function (data) {
+            $("#operation-details .flatpickr").flatpickr({
+                enableTime: true,
+                minDate: "today",
+                time_24hr: true
+            });
             $('#operation-details').slideDown('fast');
         });
     });
@@ -100,6 +105,11 @@ $(function () {
             $('#operation-details').fadeOut('fast');
             $('#detail-panel').html(data);
         }).done(function (data) {
+            $("#operation-details .flatpickr").flatpickr({
+                enableTime: true,
+                minDate: "today",
+                time_24hr: true
+            });
             $('#operation-details').slideDown('fast');
         });
     }
