@@ -20,3 +20,10 @@ Vue.component('Countdown', require('./components/Countdown.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+$(function () {
+    $('.icon[data-toggle="tooltip"]').tooltip({
+        placement: 'left',
+        delay: { "show": 200 }
+    })
+});

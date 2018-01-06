@@ -52,7 +52,9 @@ class OperationsController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'operation_type' => 'required',
-            'operation_at' => 'required|date|after:now'
+            'operation_at' => 'required|date|after:now',
+            'attr_priority' => 'required',
+            'attr_srp' => 'required'
         ]);
         
 

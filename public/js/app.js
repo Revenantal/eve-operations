@@ -968,9 +968,8 @@ module.exports = __webpack_require__(43);
 
 /***/ }),
 /* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -991,7 +990,14 @@ window.Vue = __webpack_require__(36);
 Vue.component('Countdown', __webpack_require__(39));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
+});
+
+$(function () {
+    $('.icon[data-toggle="tooltip"]').tooltip({
+        placement: 'left',
+        delay: { "show": 200 }
+    });
 });
 
 /***/ }),
