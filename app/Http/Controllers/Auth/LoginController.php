@@ -44,7 +44,7 @@ class LoginController extends Controller
     public function handleProviderCallback()
     {
         try {
-            $sso_user = Socialite::driver('eveonline')->user();;
+            $sso_user = Socialite::driver('eveonline')->user();
         } catch (InvalidStateException $exception) {
             Log::error($exception->getMessage());
 

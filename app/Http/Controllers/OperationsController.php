@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Operation;
 use App\OperationAttribute;
 use App\User;
+use Seat\Eseye\Eseye;
 
 class OperationsController extends Controller
 {
@@ -56,20 +57,41 @@ class OperationsController extends Controller
             'attr_priority' => 'required',
             'attr_srp' => 'required'
         ]);
-        
 
-        // Get User assigned to operation (eventually change this to something more reliable)
-        $assignedUser = User::where('username', $request->input('assigned_to'))->first();
+        $assignedID = null;
+
+        if ($request->input('assigned_to')) {
+            $char_id = $request->input('assigned_to');
+            $assignedUser = User::find($char_id);
+            if (!$assignedUser) {
+
+                $esi = new Eseye();
+                $character_info = $esi->invoke('get', '/characters/{character_id}/', [
+                    'character_id' => $char_id ,
+                ]);
+                $character_portrait = $esi->invoke('get', '/characters/{character_id}/portrait', [
+                    'character_id' => $char_id ,
+                ]);
+
+                $assignedUser = User::create([
+                    'id' => $char_id,
+                    'eve_token' => 0,
+                    'username' => $character_info->name,
+                    'avatar' => $character_portrait['px128x128']
+                ]);
+                
+            }
+            $assignedID = $assignedUser->id;
+        }
+
         // Create Operation
         $operation = new Operation;
         $operation->name = $request->input('name');
         $operation->type = $request->input('operation_type');
-        $operation->assigned_to = $assignedUser->id;
+        $operation->assigned_to = $assignedID;
         $operation->operation_at = $request->input('operation_at');
         $operation->created_by = auth()->user()->id;
         $operation->save();
-
-
 
         foreach ($request->input() as $key => $value) {
             if (strpos($key, 'attr_') === 0 && $value != null) {
