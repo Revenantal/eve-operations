@@ -62,5 +62,32 @@ h1, h2, h3, h4, h5, h6, p {
     position: inherit;
 }
 
+#character-selector .card {
+    -webkit-transition: box-shadow .2s ease, transform .2s ease;
+    -moz-transition: box-shadow .2s ease, transform .2s ease;
+    -o-transition: box-shadow .2s ease, transform .2s ease;
+    transition: box-shadow .2s ease, transform .2s ease;
+    cursor: pointer;
+}
 
+#character-selector .card:hover {
+    -ms-transform: scale(1.05, 1.05);
+    -webkit-transform: scale(1.05, 1.05);
+    transform: scale(1.05, 1.05);
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+}
 
+#character-selector .card .card-footer {
+    padding:10px;
+}
+
+#character-selector .card .card-footer p {
+    font-size:0.8rem;
+    font-weight:bold;
+}
+
+@media (min-width: 992px) {
+    #character-selector {
+        padding:30px;
+    }
+}

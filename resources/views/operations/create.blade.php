@@ -27,8 +27,21 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            {{Form::label('assigned_to', 'Assigned To')}}
-                            {{Form::text('assigned_to', '', ['class' => 'form-control', 'placeholder' => 'Username'])}}
+                            {{Form::label('organizer-name', 'Assigned To')}}
+                            <div class="form-row align-items-center">
+                                <div class="col-auto" style="width:48px;">
+                                    <div style="display:none; width:100%;" id="character-loading" class="text-center">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                    </div>
+                                    <img src="{{URL::asset('/images/no-fc.png')}}" id="organizer-portrait" class="rounded img-fluid"/>
+                                </div>
+                                <div class="col">
+                                    {{Form::text('organizer-name', '', ['class' => 'form-control username', 'placeholder' => 'Username'])}}
+                                </div>
+                            </div>
+                            
+                            
+                            {{ Form::hidden('assigned_to', '', array('id' => 'assigned_to')) }}
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -85,6 +98,24 @@
 
 
  {!! Form::close() !!}
+
+ <div class="modal" tabindex="-1" role="dialog" id="characterSelector">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Character Selector</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="character-selector">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('scripts')
