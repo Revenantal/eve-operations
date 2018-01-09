@@ -57,7 +57,7 @@
                                     @endif
 
                                     @if (isset($operation->keyedAttributes()['attr_structure_type']))
-                                        <img src="/images/icons/{{$operation->keyedAttributes()['attr_structure_type']->value}}.png" alt="{{$operation->keyedAttributes()['attr_structure_type']->value}}" class="img-fluid icon" data-toggle="tooltip" title="{{$operation->keyedAttributes()['attr_structure_type']->value}}"/>
+                                        <img src="/images/icons/{{strtolower($operation->keyedAttributes()['attr_structure_type']->value)}}.png" alt="{{strtolower($operation->keyedAttributes()['attr_structure_type']->value)}}" class="img-fluid icon" data-toggle="tooltip" title="{{strtolower($operation->keyedAttributes()['attr_structure_type']->value)}}"/>
                                     @endif
 
                                 </div>
