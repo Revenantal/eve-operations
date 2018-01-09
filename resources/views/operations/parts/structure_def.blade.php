@@ -25,16 +25,16 @@
                 <div class="form-group">
                     {{Form::label('attr_structure_type', 'Structure Type')}}
                     {{Form::select('attr_structure_type', [
-                                        'astrahus'  => 'Astrahus', 
-                                        'fortizar'  => 'Fortizar',
-                                        'keepstar'  => 'Keepstar',
-                                        'raitaru'   => 'Raitaru',
-                                        'azbel'     => 'Azbel',
-                                        'sotiyo'    => 'Sotiyo',
-                                        'athanor'   => 'Athanor',
+                                        'astrahus'  => 'astrahus',
+                                        'fortizar'  => 'fortizar',
+                                        'keepstar'  => 'keepstar',
+                                        'raitaru'   => 'raitaru',
+                                        'azbel'     => 'azbel',
+                                        'sotiyo'    => 'sotiyo',
+                                        'athanor'   => 'athanor',
                                         'Tatara'    => 'Tatara',
-                                        'poco'      => 'POCO',
-                                        'pos'       => 'POS' ], 
+                                        'poco'      => 'poco',
+                                        'pos'       => 'pos' ],
                                     null, ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
                 </div>
                 <div class="form-group">
