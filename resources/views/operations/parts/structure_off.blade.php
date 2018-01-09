@@ -23,6 +23,21 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
+                    {{Form::label('attr_structure_type', 'Structure Type')}}
+                    {{Form::select('attr_structure_type', [
+                                        'Astrahus'  => 'Astrahus', 
+                                        'Fortizar'  => 'Fortizar',
+                                        'Keepstar'  => 'Keepstar',
+                                        'Raitaru'   => 'Raitaru',
+                                        'Azbel'     => 'Azbel',
+                                        'Sotiyo'    => 'Sotiyo',
+                                        'Athanor'   => 'Athanor',
+                                        'Tatara'    => 'Tatara',
+                                        'POCO'      => 'POCO',
+                                        'POS'       => 'POS' ], 
+                                    null, ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
+                </div>
+                <div class="form-group">
                     {{Form::label('attr_structure_timer', 'Structure Vulnerability Starts At')}}
                     {{Form::text('attr_structure_timer', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Eve Date and Time', 'data-id' => 'datetime'])}}
                 </div>
