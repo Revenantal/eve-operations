@@ -56,6 +56,10 @@
                                         @endswitch
                                     @endif
 
+                                    @if (isset($operation->keyedAttributes()['attr_structure_type']))
+                                        <img src="/images/icons/{{$operation->keyedAttributes()['attr_structure_type']->value}}.png" alt="{{$operation->keyedAttributes()['attr_structure_type']->value}}" class="img-fluid icon" data-toggle="tooltip" title="{{$operation->keyedAttributes()['attr_structure_type']->value}}"/>
+                                    @endif
+
                                 </div>
                                 <div class="col-sm-1">
                                     @if($operation->assignedTo)
