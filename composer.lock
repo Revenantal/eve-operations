@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "87aaf04c2bf4f91da8f4e2ca8a47a0b4",
+    "content-hash": "5f741f723f9f9542894c2db739d35667",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -264,16 +264,16 @@
         },
         {
             "name": "eveseat/eseye",
-            "version": "0.0.10",
+            "version": "0.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eveseat/eseye.git",
-                "reference": "1dafe7ecb067554cc4bb7c1ebdf1a8fa44adb2c9"
+                "reference": "dba3c35ca7993d7cebd2725aabff0ce6732c4dc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eveseat/eseye/zipball/1dafe7ecb067554cc4bb7c1ebdf1a8fa44adb2c9",
-                "reference": "1dafe7ecb067554cc4bb7c1ebdf1a8fa44adb2c9",
+                "url": "https://api.github.com/repos/eveseat/eseye/zipball/dba3c35ca7993d7cebd2725aabff0ce6732c4dc2",
+                "reference": "dba3c35ca7993d7cebd2725aabff0ce6732c4dc2",
                 "shasum": ""
             },
             "require": {
@@ -311,7 +311,7 @@
                 }
             ],
             "description": "A Standalone PHP ESI (EVE Swagger Interface) Client Library",
-            "time": "2017-09-20T15:13:08+00:00"
+            "time": "2017-12-30T09:19:10+00:00"
         },
         {
             "name": "fideloper/proxy",
