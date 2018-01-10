@@ -13,3 +13,4 @@ yarn-error.log
 composer.lock
 /public/cache
 /public/logs
+composer.lock
