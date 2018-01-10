@@ -18,47 +18,10 @@
                         <a data-toggle="collapse" href="#op-{{$operation->id}}" aria-expanded="false" aria-controls="op-{{$operation->id}}">
                             <div class="row">
                                 <div class="col-sm-1">
-                                    @if (isset($operation->keyedAttributes()['attr_priority']->value))
-                                        @switch($operation->keyedAttributes()['attr_priority']->value)
-                                            @case('strat')
-                                                <img src="{{URL::asset('/images/icons/strat-op.png')}}" alt="Strategic Operation" class="img-fluid icon" data-toggle="tooltip" title="Strategic Operation"/>
-                                                @break
-                                            @case('cta')
-                                                <img src="{{URL::asset('/images/icons/cta.png')}}" alt="Call To Arms" class="img-fluid icon" data-toggle="tooltip" title="Call To Arms"/>
-                                                @break
-                                            @default
-                                                <img src="{{URL::asset('/images/icons/general-op.png')}}" alt="General Operation" class="img-fluid icon" data-toggle="tooltip" title="General Operation"/>
-                                                @break
-                                        @endswitch
-                                    @endif
-
-                                    @if ($operation->keyedAttributes()['attr_srp']->value == true)
-                                        <img src="{{URL::asset('/images/icons/srp.png')}}" alt="SRP Approved" class="img-fluid icon" data-toggle="tooltip" title="SRP Approved"/>
-                                    @endif
-
-                                    @if (isset($operation->type))
-                                        @switch($operation->type)
-                                            @case('structure_off')
-                                                <img src="{{URL::asset('/images/icons/struture_off.png')}}" alt="{{$operation->friendlyType()}}" class="img-fluid icon" data-toggle="tooltip" title="{{$operation->friendlyType()}}"/>
-                                                @break
-                                            @case('structure_def')
-                                                <img src="{{URL::asset('/images/icons/structure_def.png')}}" alt="{{$operation->friendlyType()}}" class="img-fluid icon" data-toggle="tooltip" title="{{$operation->friendlyType()}}"/>
-                                                @break
-                                            @case('roam')
-                                                <img src="{{URL::asset('/images/icons/roam.png')}}" alt="{{$operation->friendlyType()}}" class="img-fluid icon" data-toggle="tooltip" title="{{$operation->friendlyType()}}"/>
-                                                @break
-                                            @case('moon_mining')
-                                                <img src="{{URL::asset('/images/icons/mining.png')}}" alt="{{$operation->friendlyType()}}" class="img-fluid icon" data-toggle="tooltip" title="{{$operation->friendlyType()}}"/>
-                                                @break
-                                            @default
-                                                <img src="{{URL::asset('/images/icons/fun.png')}}" alt="{{$operation->friendlyType()}}" class="img-fluid icon" data-toggle="tooltip" title="{{$operation->friendlyType()}}"/>
-                                                @break
-                                        @endswitch
-                                    @endif
-
-                                    @if (isset($operation->keyedAttributes()['attr_structure_type']))
-                                        <img src="/images/icons/{{strtolower($operation->keyedAttributes()['attr_structure_type']->value)}}.png" alt="{{strtolower($operation->keyedAttributes()['attr_structure_type']->value)}}" class="img-fluid icon" data-toggle="tooltip" title="{{strtolower($operation->keyedAttributes()['attr_structure_type']->value)}}"/>
-                                    @endif
+                        
+                                    @foreach($operation->icons() as $icon)
+										<img src="{{URL::asset('/images/icons/' . $icon['image'])}}" alt="{{$icon['title']}}" class="img-fluid icon" data-toggle="tooltip" title="{{$icon['title']}}"/>
+                                    @endforeach
 
                                 </div>
                                 <div class="col-sm-1">
