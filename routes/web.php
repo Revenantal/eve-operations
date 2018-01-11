@@ -23,3 +23,9 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Operation Management
 Route::resource('operations', 'OperationsController');
 Route::get('/operations/parts/{part_name}', 'OperationsController@operation_form_part');
+
+// Add discord setting management
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
+    Route::put('/settings', ['as' => 'settings.update', 'uses' => 'SettingsController@update']);
+});
