@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Operation;
 use App\OperationAttribute;
 use App\User;
-use Seat\Eseye\Eseye;
+use nullx27\Easi\Easi;
 
 class OperationsController extends Controller
 {
@@ -61,20 +61,16 @@ class OperationsController extends Controller
         $assignedID = null;
 
         if ($request->input('assigned_to')) {
-            $char_id = $request->input('assigned_to');
-            $assignedUser = User::find($char_id);
+            $user_id = $request->input('assigned_to');
+            $assignedUser = User::find($user_id);
             if (!$assignedUser) {
 
-                $esi = new Eseye();
-                $character_info = $esi->invoke('get', '/characters/{character_id}/', [
-                    'character_id' => $char_id ,
-                ]);
-                $character_portrait = $esi->invoke('get', '/characters/{character_id}/portrait', [
-                    'character_id' => $char_id ,
-                ]);
+                $easi = new Easi();
+                $character_info = $easi->character->getCharacter($user_id);
+                $character_portrait = $easi->character->getProtrait($user_id);
 
                 $assignedUser = User::create([
-                    'id' => $char_id,
+                    'id' => $user_id,
                     'eve_token' => 0,
                     'username' => $character_info->name,
                     'avatar' => $character_portrait['px128x128']

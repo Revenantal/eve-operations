@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c37d71e2b6af7eaf01006c560174e91b",
+    "content-hash": "b27dba603a873de1855c9336994a50c2",
     "packages": [
         {
             "name": "cache/adapter-common",
@@ -570,57 +570,6 @@
                 "parser"
             ],
             "time": "2017-11-14T20:44:03+00:00"
-        },
-        {
-            "name": "eveseat/eseye",
-            "version": "0.0.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/eveseat/eseye.git",
-                "reference": "dba3c35ca7993d7cebd2725aabff0ce6732c4dc2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/eveseat/eseye/zipball/dba3c35ca7993d7cebd2725aabff0ce6732c4dc2",
-                "reference": "dba3c35ca7993d7cebd2725aabff0ce6732c4dc2",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.2",
-                "monolog/monolog": "^1.22",
-                "nesbot/carbon": "^1.21",
-                "php": ">= 7.0",
-                "predis/predis": "^1.1"
-            },
-            "require-dev": {
-                "codeclimate/php-test-reporter": "dev-master",
-                "mikey179/vfsstream": "~1",
-                "phpunit/phpunit": "^5.7"
-            },
-            "bin": [
-                "bin/tokengenerator"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Seat\\Eseye\\": "src/"
-                },
-                "files": [
-                    "src/Helpers/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Leon Jacobs",
-                    "email": "leonja511@gmail.com"
-                }
-            ],
-            "description": "A Standalone PHP ESI (EVE Swagger Interface) Client Library",
-            "time": "2017-12-30T09:19:10+00:00"
         },
         {
             "name": "fetch/array-utils",
