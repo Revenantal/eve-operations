@@ -1,5 +1,25 @@
 $(function() {
     
+    populateDates();
+
+    $('.date select').change(function() {
+
+        var days = $('.date select.day').val();
+        var hours = $('.date select.hour').val();
+        var minutes = $('.date select.minute').val();
+
+
+        if (days && hours && minutes) {
+            var opDate = new Date();
+            opDate.setDate(opDate.getUTCDate() + Number(days));
+            opDate.setHours(opDate.getUTCHours() + Number(hours));
+            opDate.setMinutes(opDate.getUTCMinutes() + Number(minutes));
+
+            document.querySelector(".flatpickr")._flatpickr.setDate(opDate);
+            console.log(opDate);
+        }
+    });
+
     $(".flatpickr").flatpickr({
         enableTime: true, 
         minDate: "today", 
@@ -57,9 +77,6 @@ $(function() {
         setCharacter(character_id, character_name);
         $('#characterSelector').modal('hide');
     });  
-
-
-    
 
     function getCharactersByUsername(username) {
         if (username.length >= 3) {
@@ -143,6 +160,28 @@ $(function() {
             $('#character-loading').hide();
             $('#organizer-portrait').show();
         });
+
+    }
+
+    function populateDates() {
+        $daySelect = $('select.day');
+        $hourSelect = $('select.hour');
+        $minuteSelect = $('select.minute'); 
+
+        var i = 0;
+        while (i <= 59) {
+
+            if (i <= 23) {
+                $hourSelect.append($('<option>', { value: i, text: i }));
+            }
+
+            if (i <= 31) {
+                $daySelect.append($('<option>', { value: i, text: i }));
+            }
+
+            $minuteSelect.append($('<option>', { value: i, text: i }));
+            i++;
+        }
 
     }
 });

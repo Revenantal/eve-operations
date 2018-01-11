@@ -56,7 +56,7 @@ class Operation extends Model
         $icons = [];
         $attributes = $this->keyedAttributes();
         
-        if ($attributes['attr_priority']) {
+        if (!empty($attributes['attr_priority'])) {
             switch($attributes['attr_priority']) {
                 case 'cta':
                     $icon = ['image' => 'strat-op.png', 'title' => 'Strategic Operation'];
@@ -75,7 +75,7 @@ class Operation extends Model
             $icons['attr_srp'] = ['image' => 'srp.png', 'title' => 'SRP Approved'];
         }
 
-        if ($this->type) {
+        if (!empty($this->type)) {
             switch($this->type) {
                 case 'structure_off':
                     $icon = ['image' => 'structure-off.png', 'title' => $this->friendlyType()];
@@ -96,7 +96,7 @@ class Operation extends Model
             $icons['type'] = $icon;
         }
 
-        if ($attributes['attr_structure_type']) {
+        if (!empty($attributes['attr_structure_type'])) {
             $icon = ['image' => strToLower($attributes['attr_structure_type']->value) . '.png', 'title' => $attributes['attr_structure_type']->value];
             $icons['attr_structure_type'] = $icon;
         }

@@ -84,6 +84,7 @@ class OperationsController extends Controller
             $assignedID = $assignedUser->id;
         }
 
+
         // Create Operation
         $operation = new Operation;
         $operation->name = $request->input('name');
