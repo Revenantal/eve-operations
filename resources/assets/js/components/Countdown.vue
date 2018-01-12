@@ -15,7 +15,7 @@ export default {
 
   data () {
     return {
-      now: Math.trunc((new Date()).getTime() / 1000),
+      now: Math.trunc(((new Date().getTime()) / 1000) + (new Date().getTimezoneOffset() * 60)),
       event: this.date
     }
   },
@@ -41,7 +41,7 @@ export default {
 
   mounted () {
     window.setInterval(() => {
-      this.now = Math.trunc((new Date()).getTime() / 1000)
+      this.now = Math.trunc(((new Date().getTime()) / 1000) + (new Date().getTimezoneOffset() * 60))
     }, 1000)
   },
   

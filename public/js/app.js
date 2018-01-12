@@ -46842,7 +46842,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   data: function data() {
     return {
-      now: Math.trunc(new Date().getTime() / 1000),
+      now: Math.trunc(new Date().getTime() / 1000 + new Date().getTimezoneOffset() * 60),
       event: this.date
     };
   },
@@ -46871,7 +46871,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     window.setInterval(function () {
-      _this.now = Math.trunc(new Date().getTime() / 1000);
+      _this.now = Math.trunc(new Date().getTime() / 1000 + new Date().getTimezoneOffset() * 60);
     }, 1000);
   },
 
