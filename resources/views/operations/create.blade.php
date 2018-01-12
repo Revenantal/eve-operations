@@ -57,14 +57,14 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             {{Form::label('operation_at', 'Operation Form Up')}}<span class="text-danger">*</span> <small>(Eve Time)</small>
-                            <div class="form-row d-flex">
+                            <div class="form-row d-flex date">
                                 <div class="col-lg-5 align-items-stretch">
                                     {{Form::text('operation_at', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Date and Time', 'data-id' => 'datetime'])}}
                                 </div>
                                 <div class="col-lg-1 text-center align-items-stretch align-self-center">
                                     OR
                                 </div>
-                                <div class="col-lg-6 align-items-stretch align-self-center date">
+                                <div class="col-lg-6 align-items-stretch align-self-center">
                                     <div class="form-row">
                                         <div class="col-sm-4 align-self-center">
                                             <select id="inputState" class="form-control form-control-sm day">
