@@ -1,3 +1,7 @@
+/*************************************************
+    General
+*************************************************/
+
 html {
     margin-right: calc(-1 * (100vw - 100%));
     overflow-x: hidden;
@@ -15,27 +19,78 @@ h1, h2, h3, h4, h5, h6, p {
     color:#333333;
 }
 
+/*************************************************
+    Operation
+*************************************************/
+
 .operations .operation { 
     -webkit-transition: box-shadow .2s ease;
     -moz-transition: box-shadow .2s ease;
     -o-transition: box-shadow .2s ease;
     transition: box-shadow .2s ease;
+    border:0;
 }
 
-.operations .operation:hover { 
+.operations .operation:hover,
+.operations .operation:hover .edit-controls { 
     box-shadow: 0px 0px 20px 0px #b9b9b9;
 }
 
-.operations .operation.cta { 
-    background-color: rgba(255, 0, 0, 0.15);
+.operations .operation > .card-body { 
+    background-color:white;
+    z-index: 1;
+    border-radius: 0.25rem;
 }
 
-.operations .operation.strat { 
-    background-color: rgba(255, 255, 0, 0.15);
-}
-
-.operations .operation > .card-body a:hover {
+.operations .operation > .card-body > a:hover {
     text-decoration:none;
+}
+
+.operations .operation .edit-controls {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background-color: white;
+    padding: 5px 5px 0px 5px;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25em;
+    border-bottom: 1px solid white;
+    transition: top .4s ease, box-shadow .2s ease;
+}
+
+.operations .operation.active .edit-controls {
+    top: -53px;
+}
+
+.operations .operation .edit-controls .button {
+    float:left;
+    padding: 10px 14px 10px 12px;
+    font-size: 18px;
+    color: white;
+    box-shadow: inset -3px -3px 0px 0px rgba(0, 0, 0, 0.25);
+    margin: 0 2px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    transition: box-shadow .2s ease, text-shadow .2s ease;  
+}
+
+.operations .operation.cta > .card-body,
+.operations .operation.cta .edit-controls
+ { 
+    background-color: #ffd8d8;
+}
+
+.operations .operation.strat > .card-body,
+.operations .operation.strat .edit-controls { 
+    background-color: rgb(254, 254, 205);
+}
+
+.operations .operation .edit-controls .button:hover,
+.operations .operation .edit-controls .button:active,
+.operations .operation .edit-controls .button:focus {
+    box-shadow: inset 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.5);
+    cursor:pointer;
 }
 
 .operations .operation .icon {
@@ -61,6 +116,10 @@ h1, h2, h3, h4, h5, h6, p {
     background-color: white;
     position: inherit;
 }
+
+/*************************************************
+    Character Selector
+*************************************************/
 
 #character-selector .card {
     -webkit-transition: box-shadow .2s ease, transform .2s ease;

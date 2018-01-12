@@ -14,15 +14,24 @@
         @if(count($operations) > 0)
             @foreach($operations as $operation)
                 <div class="card mb-3 operation {{$operation->keyedAttributes()['attr_priority']->value}}">
+                    <div class="edit-controls">
+                        <div class="button bg-primary" data-toggle="tooltip" title="Broadcast">
+                            <i class="far fa-fw fa-bullhorn"></i>
+                        </div>
+                        <div class="button bg-warning" data-toggle="tooltip" title="Edit">
+                            <i class="far fa-fw fa-pen"></i>
+                        </div>
+                        <div class="button bg-danger" data-toggle="tooltip" title="Delete">
+                            <i class="far fa-fw fa-trash"></i>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <a data-toggle="collapse" href="#op-{{$operation->id}}" aria-expanded="false" aria-controls="op-{{$operation->id}}">
                             <div class="row">
                                 <div class="col-sm-1">
-                        
                                     @foreach($operation->icons() as $icon)
 										<img src="{{URL::asset('/images/icons/' . $icon['image'])}}" alt="{{$icon['title']}}" class="img-fluid icon" data-toggle="tooltip" title="{{$icon['title']}}"/>
                                     @endforeach
-
                                 </div>
                                 <div class="col-sm-1">
                                     @if($operation->assignedTo)

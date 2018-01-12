@@ -16675,6 +16675,10 @@ a.text-dark:hover {
   visibility: hidden !important;
 }
 
+/*************************************************
+    General
+*************************************************/
+
 html {
   margin-right: calc(-1 * (100vw - 100%));
   overflow-x: hidden;
@@ -16698,29 +16702,87 @@ p {
   color: #333333;
 }
 
+/*************************************************
+    Operation
+*************************************************/
+
 .operations .operation {
   -webkit-transition: box-shadow .2s ease;
   -webkit-transition: -webkit-box-shadow .2s ease;
   transition: -webkit-box-shadow .2s ease;
   transition: box-shadow .2s ease;
   transition: box-shadow .2s ease, -webkit-box-shadow .2s ease;
+  border: 0;
 }
 
-.operations .operation:hover {
+.operations .operation:hover,
+.operations .operation:hover .edit-controls {
   -webkit-box-shadow: 0px 0px 20px 0px #b9b9b9;
           box-shadow: 0px 0px 20px 0px #b9b9b9;
 }
 
-.operations .operation.cta {
-  background-color: rgba(255, 0, 0, 0.15);
+.operations .operation > .card-body {
+  background-color: white;
+  z-index: 1;
+  border-radius: 0.25rem;
 }
 
-.operations .operation.strat {
-  background-color: rgba(255, 255, 0, 0.15);
-}
-
-.operations .operation > .card-body a:hover {
+.operations .operation > .card-body > a:hover {
   text-decoration: none;
+}
+
+.operations .operation .edit-controls {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  background-color: white;
+  padding: 5px 5px 0px 5px;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25em;
+  border-bottom: 1px solid white;
+  -webkit-transition: top .4s ease, -webkit-box-shadow .2s ease;
+  transition: top .4s ease, -webkit-box-shadow .2s ease;
+  transition: top .4s ease, box-shadow .2s ease;
+  transition: top .4s ease, box-shadow .2s ease, -webkit-box-shadow .2s ease;
+}
+
+.operations .operation.active .edit-controls {
+  top: -53px;
+}
+
+.operations .operation .edit-controls .button {
+  float: left;
+  padding: 10px 14px 10px 12px;
+  font-size: 18px;
+  color: white;
+  -webkit-box-shadow: inset -3px -3px 0px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: inset -3px -3px 0px 0px rgba(0, 0, 0, 0.25);
+  margin: 0 2px;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+  -webkit-transition: text-shadow .2s ease, -webkit-box-shadow .2s ease;
+  transition: text-shadow .2s ease, -webkit-box-shadow .2s ease;
+  transition: box-shadow .2s ease, text-shadow .2s ease;
+  transition: box-shadow .2s ease, text-shadow .2s ease, -webkit-box-shadow .2s ease;
+}
+
+.operations .operation.cta > .card-body,
+.operations .operation.cta .edit-controls {
+  background-color: #ffd8d8;
+}
+
+.operations .operation.strat > .card-body,
+.operations .operation.strat .edit-controls {
+  background-color: #fefecd;
+}
+
+.operations .operation .edit-controls .button:hover,
+.operations .operation .edit-controls .button:active,
+.operations .operation .edit-controls .button:focus {
+  -webkit-box-shadow: inset 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+  text-shadow: -1px -1px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .operations .operation .icon {
@@ -16745,6 +16807,10 @@ p {
   background-color: white;
   position: inherit;
 }
+
+/*************************************************
+    Character Selector
+*************************************************/
 
 #character-selector .card {
   -webkit-transition: box-shadow .2s ease, transform .2s ease;

@@ -994,6 +994,10 @@ var app = new Vue({
 });
 
 $(function () {
+    $('[data-toggle="tooltip"]').tooltip({
+        delay: { "show": 200 }
+    });
+
     $('.icon[data-toggle="tooltip"]').tooltip({
         placement: 'left',
         delay: { "show": 200 }
