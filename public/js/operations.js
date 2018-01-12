@@ -82,9 +82,12 @@ $(function () {
 
     $('.date select').change(function () {
 
-        var days = $('.date select.day').val();
-        var hours = $('.date select.hour').val();
-        var minutes = $('.date select.minute').val();
+        $picker = $(this).parents('.date');
+        var days = $picker.find('select.day').val();
+        var hours = $picker.find('select.hour').val();
+        var minutes = $picker.find('select.minute').val();
+
+        console.log(days + " " + hours + " " + minutes);
 
         if (days && hours && minutes) {
             var opDate = new Date();
@@ -92,8 +95,11 @@ $(function () {
             opDate.setHours(opDate.getUTCHours() + Number(hours));
             opDate.setMinutes(opDate.getUTCMinutes() + Number(minutes));
 
-            document.querySelector(".flatpickr")._flatpickr.setDate(opDate);
-            console.log(opDate);
+            $picker.find(".flatpickr").flatpickr({
+                enableTime: true,
+                minDate: "today",
+                time_24hr: true
+            }).setDate(opDate);
         }
     });
 
@@ -206,15 +212,12 @@ $(function () {
 
         var i = 0;
         while (i <= 59) {
-
             if (i <= 23) {
                 $hourSelect.append($('<option>', { value: i, text: i }));
             }
-
             if (i <= 31) {
                 $daySelect.append($('<option>', { value: i, text: i }));
             }
-
             $minuteSelect.append($('<option>', { value: i, text: i }));
             i++;
         }

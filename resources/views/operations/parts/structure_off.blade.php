@@ -38,8 +38,35 @@
                                     null, ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
                 </div>
                 <div class="form-group">
-                    {{Form::label('attr_structure_timer', 'Structure Vulnerability Starts At')}}
-                    {{Form::text('attr_structure_timer', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Eve Date and Time', 'data-id' => 'datetime'])}}
+                    {{Form::label('attr_structure_timer', 'Structure Vulnerability Starts At')}} <small>(Eve Time)</small>
+                    <div class="form-row d-flex date">
+                        <div class="col-lg-5 align-items-stretch">
+                            {{Form::text('attr_structure_timer', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Date and Time', 'data-id' => 'datetime'])}}
+                        </div>
+                        <div class="col-lg-1 text-center align-items-stretch align-self-center">
+                            OR
+                        </div>
+                        <div class="col-lg-6 align-items-stretch align-self-center">
+                            <div class="form-row">
+                                <div class="col-sm-4 align-self-center">
+                                    <select id="inputState" class="form-control form-control-sm day">
+                                        <option value='' selected>DD</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select id="inputState" class="form-control form-control-sm hour">
+                                        <option value='' selected>HH</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select id="inputState" class="form-control form-control-sm minute">
+                                        <option value='' selected>MM</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="form-group">
                     {{Form::label('attr_timer_type', 'Timer Type')}}
