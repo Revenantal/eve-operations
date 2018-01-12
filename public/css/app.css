@@ -16679,11 +16679,6 @@ a.text-dark:hover {
     General
 *************************************************/
 
-html {
-  margin-right: calc(-1 * (100vw - 100%));
-  overflow-x: hidden;
-}
-
 body {
   font-family: 'Nunito', sans-serif;
 }
@@ -16844,6 +16839,13 @@ p {
 @media (min-width: 992px) {
   #character-selector {
     padding: 30px;
+  }
+}
+
+@media (min-width: 767px) {
+  html {
+    margin-right: calc(-1 * (100vw - 100%));
+    overflow-x: hidden;
   }
 }
 
