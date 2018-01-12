@@ -13,7 +13,7 @@
     </div>
 </div>
 
-{!! Form::open(['action' => 'OperationsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+{!! Form::open(['action' => 'OperationsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'operation-form']) !!}
     <div class="container mb-3">
         <div class="card mb-3">
             <div class="card-body">
@@ -39,8 +39,6 @@
                                     {{Form::text('organizer-name', '', ['class' => 'form-control username', 'placeholder' => 'Username'])}}
                                 </div>
                             </div>
-                            
-                            
                             {{ Form::hidden('assigned_to', '', array('id' => 'assigned_to')) }}
                         </div>
                     </div>
@@ -61,7 +59,7 @@
                             {{Form::label('operation_at', 'Operation Form Up')}}<span class="text-danger">*</span> <small>(Eve Time)</small>
                             <div class="form-row d-flex">
                                 <div class="col-lg-5 align-items-stretch">
-                                    {{Form::text('operation_at', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Eve Date and Time', 'data-id' => 'datetime'])}}
+                                    {{Form::text('operation_at', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Date and Time', 'data-id' => 'datetime'])}}
                                 </div>
                                 <div class="col-lg-1 text-center align-items-stretch align-self-center">
                                     OR
@@ -86,9 +84,6 @@
                                     </div>
                                 </div>
                             </div>
-                           
-                        </div>
-                        <div class="form-group">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -121,14 +116,42 @@
                 <div class="detail-panel" id="detail-panel"> </div>
             </div>
         </div>
-
-        {{Form::submit('Create Operation', ['class'=>'btn btn-primary'])}}
     </div>
 
+    <div class="container mb-3">
+        {{Form::submit('Create Operation', ['class'=>'btn btn-primary'])}}
+    </div>
+    
 
- {!! Form::close() !!}
+{!! Form::close() !!}
 
- <div class="modal" tabindex="-1" role="dialog" id="characterSelector">
+<div id="fun" class="detail-view">
+    @include('operations.parts.fun')
+</div>
+
+<div id="general" class="detail-view">
+    @include('operations.parts.general')
+</div>
+
+<div id="moon_mining" class="detail-view">
+    @include('operations.parts.moon_mining')
+</div>
+
+<div id="roam" class="detail-view">
+    @include('operations.parts.roam')
+</div>
+
+<div id="structure_def" class="detail-view">
+    @include('operations.parts.structure_def')
+</div>
+
+<div id="structure_off" class="detail-view">
+    @include('operations.parts.structure_off')
+</div>
+    
+
+
+<div class="modal" tabindex="-1" role="dialog" id="characterSelector">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">

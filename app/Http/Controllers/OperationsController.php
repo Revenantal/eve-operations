@@ -147,8 +147,4 @@ class OperationsController extends Controller
     {
         //
     }
-
-    public function operation_form_part($part_name) {
-        return view('operations.parts.' . $part_name)->render();
-    }
 }

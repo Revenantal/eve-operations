@@ -16771,6 +16771,10 @@ p {
   font-weight: bold;
 }
 
+.detail-view {
+  display: none;
+}
+
 @media (min-width: 992px) {
   #character-selector {
     padding: 30px;

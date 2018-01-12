@@ -27,43 +27,8 @@ $(function() {
     });
 
     $("#operation_type").change(function() {
-        $detailPanel = $("#detail-panel");
-        $('#operation-details').fadeOut('fast');
-        $.get(
-            "/operations/parts/" + this.value,
-            function (data) {
-                $detailPanel.html(data);
-            }
-        )        
-        .done(function( data ) {
-            $("#operation-details .flatpickr").flatpickr({
-                enableTime: true, 
-                minDate: "today", 
-                time_24hr: true
-            });
-            $('#operation-details').slideDown('fast');
-        });
+        changeDetailPanel(this.value);
     });
-
-    if ($('#operation_type').find(":selected").val()) {
-        $opType = $('#operation_type').find(":selected").val();
-        $.get(
-            "/operations/parts/" + $opType,
-            function (data) {
-                $('#operation-details').fadeOut('fast');
-                $('#detail-panel').html(data);
-            }
-        )
-        .done(function( data ) {
-            $("#operation-details .flatpickr").flatpickr({
-                enableTime: true, 
-                minDate: "today", 
-                time_24hr: true
-            });
-            $('#operation-details').slideDown('fast');
-        });
-    }
-
 
     // Validate if user exists
     $('.username').focusout(function() {
@@ -182,6 +147,27 @@ $(function() {
             $minuteSelect.append($('<option>', { value: i, text: i }));
             i++;
         }
+    }
+
+    function changeDetailPanel(panelName) {
+        $detailPanel = $("#detail-panel");
+        $targetView = $("#" + panelName);
+        $currentView = $detailPanel.find(".detail-view");
+        $form = $("#operation-form");
+
+        if ($currentView.length != 0) {
+            $currentView.slideUp('normal', function() {
+                $currentView.detach();
+                $currentView.appendTo($form);
+                $targetView.appendTo($detailPanel);
+                $targetView.slideDown('normal');
+            });
+        } else {
+            $("#operation-details").fadeIn('fast');
+            $targetView.appendTo($detailPanel);
+            $targetView.slideDown('normal');
+        }
+
 
     }
 });
