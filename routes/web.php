@@ -22,4 +22,3 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Operation Management
 Route::resource('operations', 'OperationsController');
-Route::get('/operations/parts/{part_name}', 'OperationsController@operation_form_part');
