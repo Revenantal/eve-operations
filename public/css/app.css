@@ -7603,7 +7603,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f5f8fa;
+  background-color: #d0d0d0;
 }
 
 [tabindex="-1"]:focus {
@@ -8052,7 +8052,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #f5f8fa;
+  background-color: #d0d0d0;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   -webkit-transition: all 0.2s ease-in-out;
@@ -9167,7 +9167,7 @@ pre code {
 }
 
 .table .table {
-  background-color: #f5f8fa;
+  background-color: #d0d0d0;
 }
 
 .table-sm th,
@@ -9333,7 +9333,7 @@ pre code {
 }
 
 .thead-inverse th {
-  color: #f5f8fa;
+  color: #d0d0d0;
   background-color: #212529;
 }
 
@@ -9343,7 +9343,7 @@ pre code {
 }
 
 .table-inverse {
-  color: #f5f8fa;
+  color: #d0d0d0;
   background-color: #212529;
 }
 
@@ -10990,8 +10990,8 @@ tbody.collapse.show {
 }
 
 .custom-control-input:focus ~ .custom-control-indicator {
-  -webkit-box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 3px #007bff;
-          box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 3px #007bff;
+  -webkit-box-shadow: 0 0 0 1px #d0d0d0, 0 0 0 3px #007bff;
+          box-shadow: 0 0 0 1px #d0d0d0, 0 0 0 3px #007bff;
 }
 
 .custom-control-input:active ~ .custom-control-indicator {
@@ -11226,8 +11226,8 @@ tbody.collapse.show {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #f5f8fa;
-  border-color: #ddd #ddd #f5f8fa;
+  background-color: #d0d0d0;
+  border-color: #ddd #ddd #d0d0d0;
 }
 
 .nav-tabs .dropdown-menu {
@@ -16679,12 +16679,19 @@ a.text-dark:hover {
     General
 *************************************************/
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   font-family: 'Nunito', sans-serif;
+  margin-bottom: 40px;
 }
 
 .content {
   margin-top: 30px;
+  padding-bottom: 30px;
 }
 
 h1,
@@ -16834,6 +16841,24 @@ p {
 
 .detail-view {
   display: none;
+}
+
+/*************************************************
+    Stick Footer
+*************************************************/
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.footer a {
+  color: #7e7e7e;
 }
 
 @media (min-width: 992px) {
