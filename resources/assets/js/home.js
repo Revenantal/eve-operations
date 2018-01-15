@@ -2,7 +2,7 @@ $(function() {
     $('.localtime').each(function() {
         var strDate = $(this).data('date');
         var date = new Date(strDate + ' UTC');
-        $(this).text(date.toString());
+        $(this).text(moment(date).format('YYYY-MM-DD HH:mm:ss'));
     });
 
     $('.operation > .card-body > a').on('click', function() {

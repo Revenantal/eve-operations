@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <h4>Local Time</h4>
-                                    <div class="localtime" data-date="{{$operation->operation_at}}">test</div>
+                                    <div class="localtime" data-date="{{$operation->operation_at}}"></div>
                                 </div>
                             </div>
                         </a>
