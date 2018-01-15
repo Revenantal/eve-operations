@@ -22,7 +22,6 @@
     "dependencies": {
         "@fortawesome/fontawesome-free-webfonts": "^1.0.1",
         "@fortawesome/fontawesome-pro-webfonts": "^1.0.1",
-        "flatpickr": "^4.2.0",
-        "moment": "^2.20.1"
+        "flatpickr": "^4.2.0"
     }
 }
