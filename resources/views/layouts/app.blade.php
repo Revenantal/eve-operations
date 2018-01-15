@@ -61,7 +61,13 @@
         <footer class="footer bg-dark">
             <div class="container">
                 <div class="col-12 text-center">
-                  <span class="text-muted"><a href="https://evewho.com/pilot/yipcool" target="_blank">Yipcool</a> - <a href="https://evewho.com/pilot/AzAkiR+NaLDa" target="_blank">AzAkir NaLDa</a> - <a href="https://github.com/revenantal/eve-operations" target="_blank">Github</a> - <a href="https://github.com/revenantal/eve-operations/issues/new" target="_blank">Report an issue</a></span>
+                  <span class="text-muted">
+                    <a href="https://evewho.com/pilot/yipcool" target="_blank">Yipcool</a> - 
+                    <a href="https://evewho.com/pilot/AzAkiR+NaLDa" target="_blank">AzAkir NaLDa</a> - 
+                    <a href="https://github.com/revenantal/eve-operations" target="_blank">Github</a> - 
+                    <a href="https://github.com/revenantal/eve-operations/issues/new" target="_blank">Report an issue</a> -
+                    <a href="https://trello.com/b/pLEv4zuv/eve-operations-website" target="_blank">Trello</a>
+                  </span>
                 <div class="container">
             </div>
         </footer>
