@@ -60,8 +60,8 @@
                                 </div>
                             </div>
                         </a>
-                        <div class="row collapse mt-3" id="op-{{$operation->id}}">
-                            <div class="col-sm-12 mb-3">
+                        <div class="row collapse" id="op-{{$operation->id}}">
+                            <div class="col-sm-12 mt-3 mb-3">
                                 <div class="card bg-light">
                                     <div class="card-body">
                                         <div class="row">
