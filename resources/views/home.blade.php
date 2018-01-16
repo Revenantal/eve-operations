@@ -13,7 +13,11 @@
     <div class="operations">
         @if(count($operations) > 0)
             @foreach($operations as $operation)
+<<<<<<< HEAD
                 <div class="card mb-3 operation {{$operation->keyedAttributes()['attr_priority']->value}}" data-operation-id="{{$operation->id}}">
+=======
+                <div class="card mb-3 operation {{$operation->keyedAttributes()['attr_priority']->value}}">
+>>>>>>> 91a828c5567c7959ea575ca234e0585c24543740
                     <div class="edit-controls">
                         <div class="button bg-primary" data-toggle="tooltip" title="Broadcast">
                             <i class="far fa-fw fa-bullhorn"></i>
@@ -21,7 +25,11 @@
                         <div class="button bg-warning" data-toggle="tooltip" title="Edit">
                             <i class="far fa-fw fa-pen"></i>
                         </div>
+<<<<<<< HEAD
                         <div class="button bg-danger" data-toggle="tooltip" title="Delete" data-action="delete">
+=======
+                        <div class="button bg-danger" data-toggle="tooltip" title="Delete">
+>>>>>>> 91a828c5567c7959ea575ca234e0585c24543740
                             <i class="far fa-fw fa-trash"></i>
                         </div>
                     </div>
@@ -41,7 +49,11 @@
                                     @endif
                                 </div>
                                 <div class="col-sm-5">
+<<<<<<< HEAD
                                     <h3 class="operation-name">{{$operation->name}}</h3>
+=======
+                                    <h3>{{$operation->name}}</h3>
+>>>>>>> 91a828c5567c7959ea575ca234e0585c24543740
                                     @if (isset($operation->keyedAttributes()['attr_structure_timer']->value))
                                         <p>  
                                             Structure comes out in: <countdown date="{{$operation->keyedAttributes()['attr_structure_timer']->value}}"></countdown>
