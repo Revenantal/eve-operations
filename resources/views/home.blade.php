@@ -13,7 +13,7 @@
     <div class="operations">
         @if(count($operations) > 0)
             @foreach($operations as $operation)
-                <div class="card mb-3 operation {{$operation->keyedAttributes()['attr_priority']->value}}">
+                <div class="card mb-3 operation {{$operation->keyedAttributes()['attr_priority']->value}}" data-operation-id="{{$operation->id}}">
                     <div class="edit-controls">
                         <div class="button bg-primary" data-toggle="tooltip" title="Broadcast">
                             <i class="far fa-fw fa-bullhorn"></i>
@@ -21,7 +21,7 @@
                         <div class="button bg-warning" data-toggle="tooltip" title="Edit">
                             <i class="far fa-fw fa-pen"></i>
                         </div>
-                        <div class="button bg-danger" data-toggle="tooltip" title="Delete">
+                        <div class="button bg-danger" data-toggle="tooltip" title="Delete" data-action="delete">
                             <i class="far fa-fw fa-trash"></i>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                                     @endif
                                 </div>
                                 <div class="col-sm-5">
-                                    <h3>{{$operation->name}}</h3>
+                                    <h3 class="operation-name">{{$operation->name}}</h3>
                                     @if (isset($operation->keyedAttributes()['attr_structure_timer']->value))
                                         <p>  
                                             Structure comes out in: <countdown date="{{$operation->keyedAttributes()['attr_structure_timer']->value}}"></countdown>
@@ -169,6 +169,31 @@
                 </div>
             </div>    
         @endif
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteOperationModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Operation?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you wish to delete operation "<strong><span class="op-name"></span></strong>"?
+            </div>
+            <div class="modal-footer">
+                <form action="{{ route('operations.destroy', 62) }}" method="POST">
+                    <a href="#" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                    <button class="btn btn-danger confirm">Delete</button>
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

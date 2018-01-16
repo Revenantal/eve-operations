@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Operation extends Model
 {
+    use SoftDeletes;
     public $timestamps = false;
     
     public function createdBy(){

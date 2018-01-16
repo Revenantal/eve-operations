@@ -145,6 +145,8 @@ class OperationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $operation = Operation::find($id);
+        $operation->delete();
+        return redirect('/')->with('success', 'Operation deleted successfully!');
     }
 }
