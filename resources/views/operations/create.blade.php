@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            {{Form::label('operation_at', 'Operation Form Up')}}<span class="text-danger">*</span> <small>(Eve Time)</small>
+                            {{Form::label('operation_at', 'Operation Form Up')}}<span class="text-danger">*</span> <small>(EVE Time)</small>
                             <div class="form-row d-flex date">
                                 <div class="col-lg-5 align-items-stretch">
                                     {{Form::text('operation_at', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Date and Time', 'data-id' => 'datetime'])}}

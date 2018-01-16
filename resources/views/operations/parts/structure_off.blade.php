@@ -38,7 +38,7 @@
                                     null, ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
                 </div>
                 <div class="form-group">
-                    {{Form::label('attr_structure_timer', 'Structure Vulnerability Starts At')}} <small>(Eve Time)</small>
+                    {{Form::label('attr_structure_timer', 'Structure Vulnerability Starts At')}} <small>(EVE Time)</small>
                     <div class="form-row d-flex date">
                         <div class="col-lg-5 align-items-stretch">
                             {{Form::text('attr_structure_timer', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Date and Time', 'data-id' => 'datetime'])}}

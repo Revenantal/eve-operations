@@ -45,7 +45,7 @@
                                     @if (isset($operation->keyedAttributes()['attr_structure_timer']->value))
                                         <p>  
                                             Structure comes out in: <countdown date="{{$operation->keyedAttributes()['attr_structure_timer']->value}}"></countdown>
-                                            <small>({{$operation->keyedAttributes()['attr_structure_timer']->value}} ET)</small>
+                                            <small>({{$operation->keyedAttributes()['attr_structure_timer']->value}} EVE)</small>
                                         </p>
                                     @endif
                                 </div>
@@ -53,7 +53,7 @@
                                     <h4>
                                         Form Up In:<br>
                                         <countdown date="{{$operation->operation_at}}"></countdown>
-                                        <small>({{$operation->operation_at}} ET)</small>
+                                        <small>({{$operation->operation_at}} EVE)</small>
                                     </h4>
                                 </div>
                                 <div class="col-sm-2">

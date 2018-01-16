@@ -60,27 +60,28 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 48);
+/******/ 	return __webpack_require__(__webpack_require__.s = 172);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 48:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(49);
+module.exports = __webpack_require__(173);
 
 
 /***/ }),
 
-/***/ 49:
+/***/ 173:
 /***/ (function(module, exports) {
 
 $(function () {
     $('.localtime').each(function () {
         var strDate = $(this).data('date');
         var date = new Date(strDate + ' UTC');
-        $(this).text(date.toString());
+
+        $(this).text(moment(date).format('YYYY-MM-DD HH:mm:ss') + " " + moment().tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format('z'));
     });
 
     $('.operation > .card-body > a').on('click', function () {
