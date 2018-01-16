@@ -1,10 +1,10 @@
 <template>
-  <div class="countdown">
+  <span class="countdown">
     {{ days | two_digits }}D 
     {{ hours | two_digits }}H
     {{ minutes | two_digits }}M 
     {{ seconds | two_digits }}S
-  </div>
+  </span>
 </template>
 
 <script>
@@ -51,6 +51,10 @@ export default {
       {
         return "0"+value.toString();
       }
+      if (value.toString().length <= 2 && value.toString().includes("-")) {
+        return value.toString().replace("-", "-0");
+      }
+
       return value.toString();
     }
   }

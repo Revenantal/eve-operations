@@ -133,6 +133,26 @@ h1, h2, h3, h4, h5, h6, p {
     position: inherit;
 }
 
+.operations .operation .structure-timer,
+.operations .operation .local-time p {
+    line-height:1.1rem;
+    margin-bottom:0;
+}
+
+.operations .operation .operation-name {
+    margin-bottom: 0.3rem;
+}
+
+.operations .operation .local-time h5 {
+    margin-bottom:0.1rem;
+}
+
+.operations .operation .form-up h5 {
+    margin-bottom:0rem;
+}
+
+
+
 /*************************************************
     Character Selector
 *************************************************/

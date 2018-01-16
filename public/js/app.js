@@ -63978,6 +63978,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (value.toString().length <= 1) {
         return "0" + value.toString();
       }
+      if (value.toString().length <= 2 && value.toString().includes("-")) {
+        return value.toString().replace("-", "-0");
+      }
+
       return value.toString();
     }
   }
@@ -63992,7 +63996,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "countdown" }, [
+  return _c("span", { staticClass: "countdown" }, [
     _vm._v(
       "\n  " +
         _vm._s(_vm._f("two_digits")(_vm.days)) +

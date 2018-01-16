@@ -13,7 +13,7 @@
     <div class="operations">
         @if(count($operations) > 0)
             @foreach($operations as $operation)
-                <div class="card mb-3 operation {{$operation->keyedAttributes()['attr_priority']->value}}" data-operation-id="{{$operation->id}}">
+                <div class="card mb-2 operation {{$operation->keyedAttributes()['attr_priority']->value}}" data-operation-id="{{$operation->id}}">
                     <div class="edit-controls">
                         <div class="button bg-primary" data-toggle="tooltip" title="Broadcast">
                             <i class="far fa-fw fa-bullhorn"></i>
@@ -27,42 +27,40 @@
                     </div>
                     <div class="card-body">
                         <a data-toggle="collapse" href="#op-{{$operation->id}}" aria-expanded="false" aria-controls="op-{{$operation->id}}">
-                            <div class="row">
-                                <div class="col-sm-1">
+                            <div class="row h-100">
+                                <div class="col-sm-1 my-auto">
                                     @foreach($operation->icons() as $icon)
 										<img src="{{URL::asset('/images/icons/' . $icon['image'])}}" alt="{{$icon['title']}}" class="img-fluid icon" data-toggle="tooltip" title="{{$icon['title']}}"/>
                                     @endforeach
                                 </div>
-                                <div class="col-sm-1">
+                                <div class="col-sm-1 my-auto">
                                     @if($operation->assignedTo)
                                         <img src="{{$operation->assignedTo->avatar}}" class="img-fluid" title="{{$operation->assignedTo->username}} is assigned to this operation">
                                     @else
                                         <img src="{{URL::asset('/images/no-fc.png')}}" class="img-fluid" title="No one is assigned to this operation">
                                     @endif
                                 </div>
-                                <div class="col-sm-5">
-                                    <h3 class="operation-name">{{$operation->name}}</h3>
+                                <div class="col-sm-5 my-auto">
+                                    <h4 class="operation-name">{{$operation->name}}</h4>
                                     @if (isset($operation->keyedAttributes()['attr_structure_timer']->value))
-                                        <p>  
-                                            Structure comes out in: <countdown date="{{$operation->keyedAttributes()['attr_structure_timer']->value}}"></countdown>
-                                            <small>({{$operation->keyedAttributes()['attr_structure_timer']->value}} EVE)</small>
+                                        <p class="structure-timer">  
+                                            Structure comes out in:
+                                            <strong><countdown data-toggle="tooltip" title="{{$operation->keyedAttributes()['attr_structure_timer']->value}} EVE" date="{{$operation->keyedAttributes()['attr_structure_timer']->value}}"></countdown></strong>
                                         </p>
                                     @endif
                                 </div>
-                                <div class="col-sm-3">
-                                    <h4>
-                                        Form Up In:<br>
-                                        <countdown date="{{$operation->operation_at}}"></countdown>
-                                        <small>({{$operation->operation_at}} EVE)</small>
-                                    </h4>
+                                <div class="col-sm-3 my-auto text-center form-up">
+                                    <h5>Form Up In:<br>
+                                        <strong><countdown data-toggle="tooltip" title="{{$operation->operation_at}} EVE" date="{{$operation->operation_at}}"></countdown></strong>
+                                    </h5>
                                 </div>
-                                <div class="col-sm-2">
-                                    <h4>Local Time</h4>
-                                    <div class="localtime" data-date="{{$operation->operation_at}}">test</div>
+                                <div class="col-sm-2 local-time my-auto text-center">
+                                    <h5>Local Time</h5>
+                                    <p class="localtime" data-date="{{$operation->operation_at}}"></p>
                                 </div>
                             </div>
                         </a>
-                        <div class="row collapse" id="op-{{$operation->id}}">
+                        <div class="row collapse mt-3" id="op-{{$operation->id}}">
                             <div class="col-sm-12 mb-3">
                                 <div class="card bg-light">
                                     <div class="card-body">
