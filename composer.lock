@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b27dba603a873de1855c9336994a50c2",
+    "content-hash": "7d2667f3b22b6e5978cb55ec159af85f",
     "packages": [
         {
             "name": "cache/adapter-common",
@@ -1824,6 +1824,60 @@
                 "php"
             ],
             "time": "2017-12-26T14:43:21+00:00"
+        },
+        {
+            "name": "nilsenj/toastr-laravel",
+            "version": "dev-1.0-stable",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nilsenj/toastr-laravel.git",
+                "reference": "f08a386b9961411873167b86f344514411d5758f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nilsenj/toastr-laravel/zipball/f08a386b9961411873167b86f344514411d5758f",
+                "reference": "f08a386b9961411873167b86f344514411d5758f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/session": ">=5.0.0",
+                "illuminate/support": ">=5.0.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "nilsenj\\Toastr\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kamal Nasser",
+                    "email": "kamal@kamalnasser.net"
+                },
+                {
+                    "name": "Ivan Nikolenko",
+                    "email": "nikoleivan@gmail.com"
+                }
+            ],
+            "description": "toastr.js for Laravel 5.* easy notification like growl for example",
+            "homepage": "https://github.com/nilsenj/toastr-laravel",
+            "keywords": [
+                "laravel",
+                "notification",
+                "php",
+                "toastr"
+            ],
+            "time": "2017-01-15T08:13:02+00:00"
         },
         {
             "name": "nullx27/easi",
@@ -5679,6 +5733,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "nilsenj/toastr-laravel": 20,
         "nullx27/eveonline-socialite": 20,
         "zizaco/entrust": 20,
         "barryvdh/laravel-debugbar": 20

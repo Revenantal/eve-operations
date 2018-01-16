@@ -19,6 +19,7 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5.0",
+        "nilsenj/toastr-laravel": "dev-1.0-stable",
         "nullx27/easi": "^1.2",
         "nullx27/eveonline-socialite": "dev-master",
         "predis/predis": "^1.1",

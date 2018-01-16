@@ -24,6 +24,7 @@
         "@fortawesome/fontawesome-pro-webfonts": "^1.0.1",
         "flatpickr": "^4.2.0",
         "moment": "^2.20.1",
-        "moment-timezone": "^0.5.14"
+        "moment-timezone": "^0.5.14",
+        "toastr": "^2.1.4"
     }
 }

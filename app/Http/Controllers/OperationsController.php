@@ -7,6 +7,7 @@ use App\Operation;
 use App\OperationAttribute;
 use App\User;
 use nullx27\Easi\Easi;
+use Toastr;
 
 class OperationsController extends Controller
 {
@@ -100,7 +101,8 @@ class OperationsController extends Controller
             }
         }
 
-        return redirect('/')->with('success', 'Operation added successfully!');
+        Toastr::success("A new operation has been added!", "New Operation");
+        return redirect('/');
     }
 
     /**
@@ -147,6 +149,7 @@ class OperationsController extends Controller
     {
         $operation = Operation::find($id);
         $operation->delete();
-        return redirect('/')->with('success', 'Operation deleted successfully!');
+        Toastr::success("Operation deleted successfully!", "Success");
+        return redirect('/');
     }
 }

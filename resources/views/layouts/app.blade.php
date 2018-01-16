@@ -11,7 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link href="{{ mix('css/toastr.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
     @yield('styles')
 </head>
 <body>
@@ -54,7 +56,7 @@
             </div>
         </nav>
         <div class="content">
-            @include('inc.messages') 
+            @include('inc.messages')
             @yield('content')
         </div>
 
@@ -68,7 +70,7 @@
                     <a href="https://github.com/revenantal/eve-operations/issues/new" target="_blank">Report an issue</a> -
                     <a href="https://trello.com/b/pLEv4zuv/eve-operations-website" target="_blank">Trello</a>
                   </span>
-                <div class="container">
+                </div>
             </div>
         </footer>
 
@@ -76,6 +78,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/toastr.js') }}"></script>
     @yield('scripts')
+    {!! Toastr::render() !!}
 </body>
 </html>

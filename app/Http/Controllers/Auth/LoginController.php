@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Two\InvalidStateException;
 use Socialite;
+use Toastr;
 
 
 class LoginController extends Controller
@@ -62,6 +63,7 @@ class LoginController extends Controller
         }
 
         Auth::loginUsingId($sso_user->id, true);
-        return redirect('/')->with('success', 'Login successful!');
+        Toastr::success("Login Successful!");
+        return redirect('/');
     }   
 }

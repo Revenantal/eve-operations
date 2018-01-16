@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use User\Auth;
 use App\Operation;
-
+use Toastr;
 
 
 class HomeController extends Controller
