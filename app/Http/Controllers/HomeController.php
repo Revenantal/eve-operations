@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use nullx27\Easi\Easi;
 use User\Auth;
 use App\Operation;
 
@@ -27,12 +28,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //$user_id = auth()->user()->id;
-
-        //$easi = new Easi();
-        //$apiCharacter = $easi->character->getProtrait($user_id);
-        //return view('home')->with('data', $apiCharacter);
-        $operations = Operation::orderBy('operation_at', 'asc')->get();
-        return view('home')->with('operations', $operations);
+        //
     }
 }
