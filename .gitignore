@@ -13,10 +13,12 @@ yarn-error.log
 composer.lock
 /public/cache
 /public/logs
-composer.lock
 .phpstorm.meta.php
 _ide_helper.php
 storage/debugbar/.gitignore
-/public/css
-/public/js
 
+
+/composer.lock
+/public/js/
+/public/fonts/
+/public/css/

@@ -14,15 +14,18 @@
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "^6.3",
+        "jeroennoten/laravel-adminlte": "^1.22",
         "laravel-notification-channels/discord": "^1.0",
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5.0",
         "nilsenj/toastr-laravel": "dev-1.0-stable",
+        "nullx27/conduit": "dev-master",
         "nullx27/easi": "^1.2",
         "nullx27/eveonline-socialite": "dev-master",
         "predis/predis": "^1.1",
+        "spatie/laravel-cookie-consent": "^2.1",
         "vinkla/hashids": "^3.3",
         "watson/active": "^2.0",
         "zizaco/entrust": "dev-master"
@@ -37,8 +40,7 @@
     },
     "autoload": {
         "classmap": [
-            "database/seeds",
-            "database/factories"
+            "database"
         ],
         "psr-4": {
             "App\\": "app/"
@@ -77,5 +79,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
-    }
+    },
+        "minimum-stability": "dev",
+        "prefer-stable": true
 }

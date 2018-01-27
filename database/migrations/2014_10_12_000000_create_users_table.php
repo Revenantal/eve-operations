@@ -15,10 +15,13 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->bigInteger('character_id');
+            $table->string('character_name');
+            $table->integer('corporation_id');
+            $table->integer('alliance_id')->default('0');
+            $table->boolean('admin')->default(false);
+            $table->timestamp('last_login')->nullable();
+            $table->rememberToken(); //Keeps causing issues so just adding it so the tool keeps working
             $table->timestamps();
         });
     }
