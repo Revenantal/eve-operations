@@ -11,8 +11,7 @@
 |
 */
 
-use App\User;
-use Carbon\Carbon;
+use App\Models\Auth\User;
 
 Route::get('/', 'HomeController@index');
 
@@ -28,6 +27,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Auth', 'middleware' => 'auth'
     Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
     Route::resource('/roles', 'RoleController');
     Route::resource('/permissions', 'PermissionController');
+    Route::resource('/users', 'UserController');
 });
 
 Route::resource('operations', 'OperationsController');

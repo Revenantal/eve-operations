@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Operation;
 use App\OperationAttribute;
-use App\User;
+use App\Models\Auth\User;
 use nullx27\Easi\Easi;
 use Toastr;
 

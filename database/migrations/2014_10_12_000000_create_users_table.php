@@ -18,8 +18,9 @@ class CreateUsersTable extends Migration
             $table->bigInteger('character_id');
             $table->string('character_name');
             $table->integer('corporation_id');
-            $table->integer('alliance_id')->default('0');
-            $table->boolean('admin')->default(false);
+            $table->string('corporation_name');
+            $table->integer('alliance_id')->nullable();
+            $table->string('alliance_name')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->rememberToken(); //Keeps causing issues so just adding it so the tool keeps working
             $table->timestamps();
