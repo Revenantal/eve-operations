@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Conduit\Conduit;
@@ -65,6 +65,7 @@ class LoginController extends Controller
         // Collect character data
         $api = new Conduit();
         $character =  $api->characters($ssoUser->id)->get();
+        $corporation = $api->corporations($character->corporation_id)->get();
 
         // Check if user exists
         $user = User::firstOrNew(['character_id' => $ssoUser->id]);
@@ -73,11 +74,9 @@ class LoginController extends Controller
         $user->character_id = $ssoUser->id;
         $user->character_name = $character->name;
         $user->corporation_id = $character->corporation_id;
-
-        if ($character->alliance_id) {
+        $user->corporation_name = $corporation->name;
+        if (isset($character->alliance_id)) {
             $user->alliance_id = $character->alliance_id;
-        } else {
-            $user->alliance_id = 0;
         }
 
         $user->last_login = Carbon::now();
