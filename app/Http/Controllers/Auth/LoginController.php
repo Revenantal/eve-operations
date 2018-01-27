@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Conduit\Conduit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Two\InvalidStateException;
+use PHPUnit\Exception;
 use Socialite;
 use Toastr;
-
 
 class LoginController extends Controller
 {
@@ -36,34 +38,62 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectToProvider()
-    {
-        return Socialite::driver('eveonline')->redirect();
-    }
-
-
-    public function handleProviderCallback()
+    /**
+     * Login using the eve online socialite driver
+     *
+     * @return Exception
+     */
+    public function login()
     {
         try {
-            $sso_user = Socialite::driver('eveonline')->user();
-        } catch (InvalidStateException $exception) {
-            Log::error($exception->getMessage());
-
-            throw new \Exception("Could not retrieve user data!");
+            return Socialite::driver('eveonline')
+                ->redirect();
+        } catch (\Exception $e) {
+            Log::error('Redirect to EvE Online SSO failed');
+            return abort(502);
         }
-        $user = User::find($sso_user->id);
+    }
 
-        if (!$user) {
-            User::create([
-                'id' => $sso_user->id,
-                'eve_token' => $sso_user->token,
-                'username' => $sso_user->name,
-                'avatar' => $sso_user->avatar
-            ]);
+    public function callback()
+    {
+        try {
+            $ssoUser = Socialite::driver('eveonline')->user();
+        } catch (InvalidStateException $e) {
+            return redirect()->route('login');
         }
 
-        Auth::loginUsingId($sso_user->id, true);
-        Toastr::success("Login Successful!");
+        // Collect character data
+        $api = new Conduit();
+        $character =  $api->characters($ssoUser->id)->get();
+
+        // Check if user exists
+        $user = User::firstOrNew(['character_id' => $ssoUser->id]);
+
+        // And then update the data in case something changed
+        $user->character_id = $ssoUser->id;
+        $user->character_name = $character->name;
+        $user->corporation_id = $character->corporation_id;
+
+        if ($character->alliance_id) {
+            $user->alliance_id = $character->alliance_id;
+        } else {
+            $user->alliance_id = 0;
+        }
+
+        $user->last_login = Carbon::now();
+        $user->save();
+
+        // and then log in
+        Auth::login($user, true);
+
         return redirect('/');
-    }   
+
+        Toastr::success("Login Successful!");
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
 }

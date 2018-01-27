@@ -39,7 +39,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->username }} <span class="caret"></span>
+                                <img src="http://image.eveonline.com/Character/{{ Auth::user()->character_id }}_32.jpg" class="rounded-circle img-fluid "> {{ Auth::user()->character_name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
