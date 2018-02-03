@@ -102,8 +102,10 @@ class LoginController extends Controller
 
         $user->last_login = Carbon::now();
         $user->save();
-
-        $user->attachRole(Role::where('name', 'User')->first());
+        // Check if user has the User role assigned
+        if (!$user->hasRole('User')) {
+            $user->attachRole(Role::where('name', 'User')->first());
+        }
 
         // and then log in
         Auth::login($user, true);
