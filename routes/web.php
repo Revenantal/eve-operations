@@ -23,7 +23,7 @@ Route::group(['prefix' => 'auth'], function(){
 });
 
 // Admin Routing
-Route::group(['prefix' => 'admin', 'namespace' => 'Auth', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'admin', 'namespace' => 'Auth', 'middleware' => ['role:Admin']], function(){
     Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
     Route::resource('/roles', 'RoleController');
     Route::resource('/permissions', 'PermissionController');
