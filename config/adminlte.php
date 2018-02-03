@@ -118,6 +118,11 @@ return [
             'url'         => 'admin/roles',
             'icon'        => 'gear',
         ],
+        [
+            'text'        => 'Whitelist',
+            'url'         => '#',
+            'icon'        => 'check',
+        ],
     ],
 
     /*

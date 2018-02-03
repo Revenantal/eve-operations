@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Auth\Role;
 use App\Models\Auth\User;
+use App\Models\Auth\Whitelist;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Conduit\Conduit;
@@ -67,6 +69,20 @@ class LoginController extends Controller
         $character =  $api->characters($ssoUser->id)->get();
         $corporation = $api->corporations($character->corporation_id)->get();
 
+        // Collect Alliance id
+        $caid = data_get($character, 'data.alliance_id');
+
+        // Check if corp or alliance is whitelisted
+        if ($caid) {
+            $access = Whitelist::where('alliance_id', '=', $character->alliance_id)->count() > 0;
+        } else {
+            $access = Whitelist::where('corporation_id', '=', $character->corporation_id)->count() > 0;
+        }
+
+        if(!$access) {
+            return abort(403, 'Your Corporation or Alliance is not whitelisted!');
+        }
+
         // Check if user exists
         $user = User::firstOrNew(['character_id' => $ssoUser->id]);
 
@@ -75,19 +91,26 @@ class LoginController extends Controller
         $user->character_name = $character->name;
         $user->corporation_id = $character->corporation_id;
         $user->corporation_name = $corporation->name;
-        if (isset($character->alliance_id)) {
+        if ($caid) {
+            $alliance = $api->alliances($caid)->get();
             $user->alliance_id = $character->alliance_id;
+            $user->alliance_name = $alliance->name;
+        } else  {
+            $user->alliance_id = 0;
+            $user->alliance_name = 'No Alliance';
         }
 
         $user->last_login = Carbon::now();
         $user->save();
 
+        $user->attachRole(Role::where('name', 'User')->first());
+
         // and then log in
         Auth::login($user, true);
 
-        return redirect('/');
-
         Toastr::success("Login Successful!");
+
+        return redirect('/');
     }
 
     public function logout()

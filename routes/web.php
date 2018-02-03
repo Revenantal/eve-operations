@@ -13,7 +13,7 @@
 
 use App\Models\Auth\User;
 
-Route::get('/', 'HomeController@index');
+Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
 
 // Auth Routing
 Route::group(['prefix' => 'auth'], function(){
