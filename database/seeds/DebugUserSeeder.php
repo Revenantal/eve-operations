@@ -3,10 +3,11 @@
 use Carbon\Carbon;
 use Database\DisableForeignKeys;
 use Illuminate\Database\Seeder;
+use Database\TruncateTable;
 
 class DebugUserSeeder extends Seeder
 {
-    use DisableForeignKeys;
+    use DisableForeignKeys, TruncateTable;
 
     /**
      * Run the database seeds.
@@ -16,6 +17,7 @@ class DebugUserSeeder extends Seeder
     public function run()
     {
         $this->disableForeignKeys();
+        $this->truncate('users');
 
         //Add Debug Character, user id of 1
         $char = [
