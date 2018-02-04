@@ -1,3 +1,6 @@
+<p align="center">
+<a href="https://https://travis-ci.org/revenantal/eve-operations"><img src="https://travis-ci.org/revenantal/eve-operations.svg" alt="Build Status"></a>
+</p>
 ## Installation
 
 ### Step 1
