@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Operation;
 use App\OperationAttribute;
-use App\Models\Auth\User;
+use App\User;
 use nullx27\Easi\Easi;
 use Toastr;
 
@@ -19,7 +19,7 @@ class OperationsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('role:Admin|FC')->only('create', 'edit','destroy');
+        $this->middleware('auth');
     }
 
     /**
