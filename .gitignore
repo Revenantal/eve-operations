@@ -18,6 +18,7 @@ composer.lock
 _ide_helper.php
 storage/debugbar/.gitignore
 <<<<<<< HEAD
+<<<<<<< HEAD
 /public/css
 /public/js
 =======
@@ -28,3 +29,7 @@ storage/debugbar/.gitignore
 /public/fonts/
 /public/css/
 >>>>>>> parent of ffcbe6c... Merge branch 'master' into Auth
+=======
+/public/css
+/public/js
+>>>>>>> parent of 1c2c240... Merge pull request #6 from revenantal/Auth
