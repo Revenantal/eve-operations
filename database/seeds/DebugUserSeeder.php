@@ -28,7 +28,7 @@ class DebugUserSeeder extends Seeder
                 'corporation_id'    => '1',
                 'corporation_name'  => 'System',
                 'alliance_id'       => '1',
-                'alliance_name'     => 'Leviathan',
+                'alliance_name'     => 'Leviathan(System)',
                 'created_at'        => Carbon::now(),
                 'updated_at'        => Carbon::now(),
             ],

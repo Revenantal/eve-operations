@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Auth', 'middleware' => ['role
     Route::resource('/roles', 'RoleController');
     Route::resource('/permissions', 'PermissionController');
     Route::resource('/users', 'UserController');
+    Route::resource('/whitelist', 'WhitelistController');
 });
 
 Route::resource('operations', 'OperationsController');

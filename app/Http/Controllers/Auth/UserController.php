@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Auth\Role;
 use App\Models\Auth\User;
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Toastr;
 
 class UserController extends Controller
 {
@@ -16,8 +19,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        $roles = Role::all();
 
-        return view('admin.user.index', compact('users'));
+        return view('admin.user.index', compact('users', 'roles'));
     }
 
     /**
@@ -72,7 +76,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $roles = $request->roles;
+
+        DB::table('role_user')->where('user_id', $id)->delete();
+
+        foreach ($roles as $role){
+            $user->attachRole($role);
+        }
+
+        Toastr::success("Roles Updated!");
+
+        return redirect()->route('users.index');
     }
 
     /**

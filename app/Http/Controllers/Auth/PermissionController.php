@@ -21,27 +21,6 @@ class PermissionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -52,15 +31,28 @@ class PermissionController extends Controller
         //
     }
 
+    public function create()
+    {
+        return view('admin.permission.create');
+    }
+
     /**
-     * Show the form for editing the specified resource.
+     * Store a newly created resource in storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function store(Request $request)
     {
-        //
+        $permission = new Permission();
+
+        $permission->name = $request->name;
+        $permission->display_name = $request->display_name;
+        $permission->description = $request->description;
+
+        $permission->save();
+
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -72,7 +64,15 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $permission = Permission::find($id);
+
+        $permission->name = $request->name;
+        $permission->display_name = $request->display_name;
+        $permission->description = $request->description;
+
+        $permission->save();
+
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -83,6 +83,9 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $permission = Permission::find($id);
+        $permission->delete();
+
+        return redirect()->route('permissions.index');
     }
 }

@@ -120,7 +120,7 @@ return [
         ],
         [
             'text'        => 'Whitelist',
-            'url'         => '#',
+            'url'         => 'admin/whitelist',
             'icon'        => 'check',
         ],
     ],

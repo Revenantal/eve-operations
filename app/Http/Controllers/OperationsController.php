@@ -19,7 +19,7 @@ class OperationsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('role:Admin|FC')->only('create', 'edit','destroy');
     }
 
     /**

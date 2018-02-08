@@ -17,8 +17,8 @@ class CreateWhitelistsTable extends Migration
             $table->increments('id');
             $table->integer('corporation_id');
             $table->string('corporation_name');
-            $table->integer('alliance_id')->nullable();
-            $table->string('alliance_name')->nullable();
+            $table->integer('alliance_id')->default(1);
+            $table->string('alliance_name')->default('Leviathan(System)');
             $table->timestamps();
         });
     }
