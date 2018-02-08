@@ -29,9 +29,46 @@
                             @endforeach
                         </td>
                         <td>
-                            <a class="btn btn-info btn-sm" href="{{route('users.edit', $user->id)}}"><span class="fa fa-pencil" aria-hidden="true"></span></a>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal-{{$user->id}}">
+                                Edit Roles
+                            </button>
                         </td>
                     </tr>
+
+                    <div class="modal fade" id="myModal-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit {{$user->character_name}} Roles</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{route('users.update', $user->id)}}" method="post" role="form" id="role-form-{{$user->id}}">
+                                        {{csrf_field()}}
+                                        {{method_field('PATCH')}}
+
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" class="form-control" name="name" id="" placeholder="Role Name" value="{{$user->character_name}}">
+                                        </div>
+
+                                        <select name="roles[]" multiple>
+                                            @foreach($roles as  $role)
+                                                <option value="{{$role->id}}">{{$role->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="$('#role-form-{{$user->id}}').submit()">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 @endforeach
                 </thead>
             </table>
@@ -40,5 +77,8 @@
 @stop
 
 @push('css')
+<link href="{{ mix('css/toastr.css') }}" rel="stylesheet">
 
 @push('js')
+<script src="{{ mix('js/toastr.js') }}"></script>
+{!! Toastr::render() !!}

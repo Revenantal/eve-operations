@@ -5,7 +5,7 @@
 
 ### Step 1
 
-> To run this project, you must have PHP 7 installed as a prerequisite.
+> To run this project, you must have PHP 7.2 installed as a prerequisite.
 
 Begin by cloning this repository to your machine, and installing all Composer & NPM dependencies.
 

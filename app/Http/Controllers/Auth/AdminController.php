@@ -9,6 +9,7 @@ class AdminController extends Controller
 {
     public function index()
     {
+        //  Can  be build out  to display  op details  and/or results
         return view('admin.dashboard');
     }
 }
