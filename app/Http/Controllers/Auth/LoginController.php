@@ -6,7 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Two\InvalidStateException;
 use Socialite;
+use Toastr;
 
 
 class LoginController extends Controller
@@ -39,14 +41,16 @@ class LoginController extends Controller
         return Socialite::driver('eveonline')->redirect();
     }
 
-     /**
-     * Obtain the user information from Eve Online.
-     *
-     * @return Response
-     */
+
     public function handleProviderCallback()
     {
-        $sso_user = Socialite::driver('eveonline')->user();
+        try {
+            $sso_user = Socialite::driver('eveonline')->user();
+        } catch (InvalidStateException $exception) {
+            Log::error($exception->getMessage());
+
+            throw new \Exception("Could not retrieve user data!");
+        }
         $user = User::find($sso_user->id);
 
         if (!$user) {
@@ -59,6 +63,7 @@ class LoginController extends Controller
         }
 
         Auth::loginUsingId($sso_user->id, true);
+        Toastr::success("Login Successful!");
         return redirect('/');
     }   
 }

@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Operation;
+use App\OperationAttribute;
+use App\User;
+use nullx27\Easi\Easi;
+use Toastr;
 
 class OperationsController extends Controller
 {
@@ -24,7 +29,7 @@ class OperationsController extends Controller
      */
     public function index()
     {
-        //
+        //Do we need this? 
     }
 
     /**
@@ -34,7 +39,7 @@ class OperationsController extends Controller
      */
     public function create()
     {
-        //
+        return view('operations.create');
     }
 
     /**
@@ -45,7 +50,59 @@ class OperationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //https://laracasts.com/discuss/channels/laravel/laravel-validation-rules-if-field-empty-another-field-required
+        $this->validate($request, [
+            'name' => 'required',
+            'operation_type' => 'required',
+            'operation_at' => 'required|date|after:now',
+            'attr_priority' => 'required',
+            'attr_srp' => 'required'
+        ]);
+
+        $assignedID = null;
+
+        if ($request->input('assigned_to')) {
+            $user_id = $request->input('assigned_to');
+            $assignedUser = User::find($user_id);
+            if (!$assignedUser) {
+
+                $easi = new Easi();
+                $character_info = $easi->character->getCharacter($user_id);
+                $character_portrait = $easi->character->getProtrait($user_id);
+
+                $assignedUser = User::create([
+                    'id' => $user_id,
+                    'eve_token' => 0,
+                    'username' => $character_info->name,
+                    'avatar' => $character_portrait['px128x128']
+                ]);
+                
+            }
+            $assignedID = $assignedUser->id;
+        }
+
+
+        // Create Operation
+        $operation = new Operation;
+        $operation->name = $request->input('name');
+        $operation->type = $request->input('operation_type');
+        $operation->assigned_to = $assignedID;
+        $operation->operation_at = $request->input('operation_at');
+        $operation->created_by = auth()->user()->id;
+        $operation->save();
+
+        foreach ($request->input() as $key => $value) {
+            if (strpos($key, 'attr_') === 0 && $value != null) {
+                $operationAttribute = new OperationAttribute;
+                $operationAttribute->operation_id = $operation->id;
+                $operationAttribute->name = $key;
+                $operationAttribute->value = $value;
+                $operationAttribute->save();
+            }
+        }
+
+        Toastr::success("A new operation has been added!", "New Operation");
+        return redirect('/');
     }
 
     /**
@@ -90,6 +147,9 @@ class OperationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $operation = Operation::find($id);
+        $operation->delete();
+        Toastr::success("Operation deleted successfully!", "Success");
+        return redirect('/');
     }
 }

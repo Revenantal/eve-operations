@@ -13,8 +13,13 @@ storage/*.key
 .env.*.php
 .env.php
 .env
-Homestead.yaml
-Homestead.json
 
-# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
-.rocketeer/
+composer.lock
+/public/cache
+/public/logs
+composer.lock
+.phpstorm.meta.php
+_ide_helper.php
+storage/debugbar/.gitignore
+/public/css
+/public/js
