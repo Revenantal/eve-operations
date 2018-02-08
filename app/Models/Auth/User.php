@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models\Auth;
 
 use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
@@ -12,12 +12,16 @@ class User extends Authenticatable
     use EntrustUserTrait;
 
     /**
-     * The attributes that are mass assignable.
+     * Attributes that should be filled in
      *
      * @var array
      */
     protected $fillable = [
-        'id', 'eve_token', 'username', 'avatar',
+        'character_id',
+        'character_name',
+        'corporation_id',
+        'alliance_id',
+        'last_login',
     ];
 
     /**

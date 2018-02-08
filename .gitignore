@@ -17,9 +17,16 @@ storage/*.key
 composer.lock
 /public/cache
 /public/logs
-composer.lock
 .phpstorm.meta.php
 _ide_helper.php
 storage/debugbar/.gitignore
+
+
+
+/composer.lock
+/public/js/
+/public/fonts/
+/public/css/
+=======
 /public/css
 /public/js

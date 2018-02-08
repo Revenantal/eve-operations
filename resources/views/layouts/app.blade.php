@@ -34,15 +34,21 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/">Home</a>
                         </li>
+                        @permission('operation-create')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('operations.create') }}">Create Operation</a>
                         </li>
+                        @endpermission
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->username }} <span class="caret"></span>
+                                <img src="http://image.eveonline.com/Character/{{ Auth::user()->character_id }}_32.jpg" class="rounded-circle img-fluid "> {{ Auth::user()->character_name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @role('Admin')
+                                <a class="dropdown-item" href="{{ route('admin.index') }}">Control Panel</a>
+                                <div class="dropdown-divider"></div>
+                                @endrole
                                 <a class="dropdown-item" href="#">Profile</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

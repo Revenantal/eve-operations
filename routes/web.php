@@ -11,13 +11,32 @@
 |
 */
 
-//Auth::routes();
+use App\Models\Auth\User;
 
-Route::get('/', 'HomeController@index');
+Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
 
-// Auth
-Route::get('login', 'Auth\LoginController@redirectToProvider')->name('login');
-Route::get('login/esi/callback', 'Auth\LoginController@handleProviderCallback');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+// Auth Routing
+Route::group(['prefix' => 'auth'], function(){
+    Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@login']);
+    Route::get('/callback', ['as' => 'callback', 'uses' => 'Auth\LoginController@callback']);
+    Route::post('/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+});
+
+// Admin Routing
+Route::group(['prefix' => 'admin', 'namespace' => 'Auth', 'middleware' => ['role:Admin']], function(){
+    Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
+    Route::resource('/roles', 'RoleController');
+    Route::resource('/permissions', 'PermissionController');
+    Route::resource('/users', 'UserController');
+    Route::resource('/whitelist', 'WhitelistController');
+});
 
 Route::resource('operations', 'OperationsController');
+
+if(config('app.debug') === true) {
+    Route::get('/debug', function () {
+        $user = User::find(1);
+        auth()->login($user);
+        return redirect('/');
+    });
+}
