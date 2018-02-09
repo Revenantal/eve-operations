@@ -42,13 +42,11 @@ class InstallCommand extends Command
 
         $this->updateEnvironmentFile($this->requestEveThirdPartyDetails());
 
-        if ($this->confirm('Do you want to migrate the database and insert basic roles?', true)) {
+        if ($this->confirm('Do you want to migrate the database?', false)) {
             $this->call('migrate');
-            $this->call('db:seed');
             $this->line('~ Database successfully migrated.');
         }
         $this->call('cache:clear');
-
         $this->goodbye();
     }
 
@@ -57,7 +55,7 @@ class InstallCommand extends Command
      */
     protected function welcome()
     {
-        $this->info('>> Welcome to the EveOps installation process! <<');
+        $this->info('>> Welcome to the Council installation process! <<');
     }
 
     /**
