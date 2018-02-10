@@ -99,7 +99,7 @@ class Operation extends Model
         }
 
         if (!empty($attributes['attr_structure_type'])) {
-            $icon = ['image' => strToLower($attributes['attr_structure_type']->value) . '.png', 'title' => $attributes['attr_structure_type']->value];
+            $icon = ['image' => strToLower($attributes['attr_structure_type']->value) . '.png', 'title' => ucfirst($attributes['attr_structure_type']->value)];
             $icons['attr_structure_type'] = $icon;
         }
 
