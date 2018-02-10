@@ -11,15 +11,15 @@ class Operation extends Model
     public $timestamps = false;
     
     public function createdBy(){
-        return $this->belongsTo('App\User', 'created_by', 'id');
+        return $this->belongsTo('App\Models\Auth\User', 'created_by', 'id');
     }
 
     public function modifiedBy(){
-        return $this->belongsTo('App\User', 'modified_by', 'id');
+        return $this->belongsTo('App\Models\Auth\User', 'modified_by', 'id');
     }
 
     public function assignedTo(){
-        return $this->belongsTo('App\User', 'assigned_to', 'id');
+        return $this->belongsTo('App\Models\Auth\User', 'assigned_to', 'id');
     }
 
     public function operationAttributes(){

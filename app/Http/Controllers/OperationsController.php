@@ -59,7 +59,7 @@ class OperationsController extends Controller
             'attr_srp' => 'required'
         ]);
 
-
+        $assignedID = null;
         // Create a new user or assign an existing user
         if ($request->input('assigned_to')) {
             $character_id = $request->input('assigned_to');

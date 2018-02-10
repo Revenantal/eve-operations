@@ -35,9 +35,9 @@
                                 </div>
                                 <div class="col-sm-1 my-auto">
                                     @if($operation->assignedTo)
-                                        <img src="{{$operation->assignedTo->avatar}}" class="img-fluid" title="{{$operation->assignedTo->username}} is assigned to this operation">
+                                        <img src="//image.eveonline.com/Character/{{$operation->assignedTo->character_id}}_64.jpg" class="img-fluid rounded" title="{{$operation->assignedTo->character_name}} is assigned to this operation">
                                     @else
-                                        <img src="{{URL::asset('/images/no-fc.png')}}" class="img-fluid" title="No one is assigned to this operation">
+                                        <img src="{{URL::asset('/images/no-fc.png')}}" class="img-fluid rounded" title="No one is assigned to this operation">
                                     @endif
                                 </div>
                                 <div class="col-sm-5 my-auto">
@@ -151,9 +151,9 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                Posted by {{$operation->createdBy->username}} on {{$operation->created_at}}
+                                Posted by {{$operation->createdBy->character_name}} on {{$operation->created_at}}
                                 @if($operation->modifiedBy)
-                                    - Modified by {{$operation->modifiedBy->username}} on {{$operation->modified_on}}
+                                    - Modified by {{$operation->modifiedBy->character_name}} on {{$operation->modified_on}}
                                 @endif
                             </div>
                         </div>
