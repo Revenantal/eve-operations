@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Operation;
 use App\OperationAttribute;
 use App\Models\Auth\User;
-use nullx27\Easi\Easi;
+use Conduit\Conduit;
 use Toastr;
 
 class OperationsController extends Controller
@@ -59,24 +59,34 @@ class OperationsController extends Controller
             'attr_srp' => 'required'
         ]);
 
-        $assignedID = null;
 
+        // Create a new user or assign an existing user
         if ($request->input('assigned_to')) {
-            $user_id = $request->input('assigned_to');
-            $assignedUser = User::find($user_id);
-            if (!$assignedUser) {
+            $character_id = $request->input('assigned_to');
+            $assignedUser = User::firstOrNew(['character_id' => $character_id]);
 
-                $easi = new Easi();
-                $character_info = $easi->character->getCharacter($user_id);
-                $character_portrait = $easi->character->getProtrait($user_id);
+            if (!$assignedUser->exists) {
+                $api = new Conduit();
+                $character =  $api->characters($character_id)->get();
+                $corporation = $api->corporations($character->corporation_id)->get();
 
-                $assignedUser = User::create([
-                    'id' => $user_id,
-                    'eve_token' => 0,
-                    'username' => $character_info->name,
-                    'avatar' => $character_portrait['px128x128']
-                ]);
-                
+                // Collect Alliance id
+                $caid = data_get($character, 'data.alliance_id');
+
+                // And then update the data in case something changed
+                $assignedUser->character_id = $character_id;
+                $assignedUser->character_name = $character->name;
+                $assignedUser->corporation_id = $character->corporation_id;
+                $assignedUser->corporation_name = $corporation->name;
+                if ($caid) {
+                    $alliance = $api->alliances($caid)->get();
+                    $assignedUser->alliance_id = $character->alliance_id;
+                    $assignedUser->alliance_name = $alliance->name;
+                } else  {
+                    $assignedUser->alliance_id = 0;
+                    $assignedUser->alliance_name = 'No Alliance';
+                }
+                $assignedUser->save();
             }
             $assignedID = $assignedUser->id;
         }
