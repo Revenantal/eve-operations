@@ -20,7 +20,7 @@
         "vue": "^2.5.13"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free-webfonts": "^1.0.1",
+        "@fortawesome/fontawesome-free-webfonts": "^1.0.3",
         "bootstrap-3-typeahead": "^4.0.2",
         "flatpickr": "^4.2.0",
         "moment": "^2.20.1",

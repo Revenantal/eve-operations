@@ -16,13 +16,13 @@
                 <div class="card mb-2 operation {{$operation->keyedAttributes()['attr_priority']->value}}" data-operation-id="{{$operation->id}}">
                     <div class="edit-controls">
                         <div class="button bg-primary" data-toggle="tooltip" title="Broadcast">
-                            <i class="far fa-fw fa-bullhorn"></i>
+                            <i class="fas fa-fw fa-bullhorn"></i>
                         </div>
                         <div class="button bg-warning" data-toggle="tooltip" title="Edit">
-                            <i class="far fa-fw fa-pen"></i>
+                            <i class="fas fa-fw fa-pencil-alt"></i>
                         </div>
                         <div class="button bg-danger" data-toggle="tooltip" title="Delete" data-action="delete">
-                            <i class="far fa-fw fa-trash"></i>
+                            <i class="fas fa-fw fa-trash"></i>
                         </div>
                     </div>
                     <div class="card-body">
