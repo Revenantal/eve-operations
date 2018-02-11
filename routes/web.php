@@ -40,3 +40,6 @@ if(config('app.debug') === true) {
         return redirect('/');
     });
 }
+
+//EVE Resource Routing
+Route::get('/solarsystems/search/{name}', ['as' => 'search','uses' => 'EVE\SolarSystemsController@search']);

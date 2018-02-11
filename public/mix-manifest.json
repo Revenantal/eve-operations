@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/toastr.js": "/js/toastr.js",
+    "/js/bootstrap3-typeahead.js": "/js/bootstrap3-typeahead.js",
     "/js/flatpickr.js": "/js/flatpickr.js",
     "/js/operations.js": "/js/operations.js",
     "/js/home.js": "/js/home.js",

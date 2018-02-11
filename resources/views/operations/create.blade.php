@@ -172,5 +172,6 @@
 
 @section('scripts')
     <script src="{{ mix('/js/flatpickr.js') }}"></script>
+    <script src="{{ mix('/js/bootstrap3-typeahead.js') }}"></script>
     <script src="{{ mix('/js/operations.js') }}"></script>
 @endsection

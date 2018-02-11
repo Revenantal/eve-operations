@@ -60,55 +60,44 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 174);
+/******/ 	return __webpack_require__(__webpack_require__.s = 177);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 174:
+/***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(175);
+module.exports = __webpack_require__(178);
 
 
 /***/ }),
 
-/***/ 175:
+/***/ 178:
 /***/ (function(module, exports) {
 
 $(function () {
 
+    // Populate the date dropdowns
     populateDates();
 
-    $('.date select').change(function () {
-
-        $picker = $(this).parents('.date');
-        var days = $picker.find('select.day').val();
-        var hours = $picker.find('select.hour').val();
-        var minutes = $picker.find('select.minute').val();
-
-        console.log(days + " " + hours + " " + minutes);
-
-        if (days && hours && minutes) {
-            var opDate = new Date();
-            opDate.setDate(opDate.getUTCDate() + Number(days));
-            opDate.setHours(opDate.getUTCHours() + Number(hours));
-            opDate.setMinutes(opDate.getUTCMinutes() + Number(minutes));
-
-            $picker.find(".flatpickr").flatpickr({
-                enableTime: true,
-                minDate: "today",
-                time_24hr: true
-            }).setDate(opDate);
-        }
-    });
-
+    // Init flatpickr
     $(".flatpickr").flatpickr({
         enableTime: true,
         minDate: "today",
         time_24hr: true
     });
 
+    //Init Solar system Typeahead
+    $(".solarsystem.typeahead").typeahead({
+        source: function source(query, process) {
+            return $.get("/solarsystems/search/" + query, function (data) {
+                return process(data);
+            });
+        }
+    });
+
+    // Change the operation detail view on dropdown selection
     $("#operation_type").change(function () {
         changeDetailPanel(this.value);
     });
@@ -124,6 +113,28 @@ $(function () {
         var character_name = $(this).data('character_name');
         setCharacter(character_id, character_name);
         $('#characterSelector').modal('hide');
+    });
+
+    // Watch for date drop down changes
+    $('.date select').change(function () {
+        $picker = $(this).parents('.date');
+        var days = $picker.find('select.day').val();
+        var hours = $picker.find('select.hour').val();
+        var minutes = $picker.find('select.minute').val();
+
+        // If all 3 are set, update flatpickr
+        if (days && hours && minutes) {
+            var opDate = new Date();
+            opDate.setDate(opDate.getUTCDate() + Number(days));
+            opDate.setHours(opDate.getUTCHours() + Number(hours));
+            opDate.setMinutes(opDate.getUTCMinutes() + Number(minutes));
+
+            $picker.find(".flatpickr").flatpickr({
+                enableTime: true,
+                minDate: "today",
+                time_24hr: true
+            }).setDate(opDate);
+        }
     });
 
     function getCharactersByUsername(username) {

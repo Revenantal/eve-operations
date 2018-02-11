@@ -9,8 +9,12 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                        {{Form::label('attr_structure_location', 'Structure location')}}
-                        {{Form::text('attr_structure_location', '', ['class' => 'form-control', 'placeholder' => 'WFC-MY - Structure Name'])}}
+                    {{Form::label('attr_structure_name', 'Structure Name')}}
+                    {{Form::text('attr_structure_name', '', ['class' => 'form-control', 'placeholder' => 'Jita Trade Hub'])}}
+                </div>
+                <div class="form-group">
+                    {{Form::label('attr_structure_location', 'Structure System')}}
+                    {{Form::text('attr_structure_location', '', ['class' => 'form-control solarsystem typeahead', 'placeholder' => 'Jita', 'autocomplete' => 'off'])}}
                 </div>
                 <div class="form-group">
                     {{Form::label('attr_structure_corp', 'Structure Corporation Owners')}}

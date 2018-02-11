@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free-webfonts": "^1.0.1",
+        "bootstrap-3-typeahead": "^4.0.2",
         "flatpickr": "^4.2.0",
         "moment": "^2.20.1",
         "moment-timezone": "^0.5.14",
