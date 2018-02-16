@@ -148,8 +148,6 @@
 <div id="structure_off" class="detail-view">
     @include('operations.parts.structure_off')
 </div>
-    
-
 
 <div class="modal" tabindex="-1" role="dialog" id="characterSelector">
     <div class="modal-dialog modal-lg" role="document">

@@ -81,6 +81,12 @@ $(function () {
     // Populate the date dropdowns
     populateDates();
 
+    // Load selected operation panel on a post back
+    var selectedOption = $('#operation_type option:selected').val();
+    if (selectedOption) {
+        changeDetailPanel(selectedOption);
+    }
+
     // Init flatpickr
     $(".flatpickr").flatpickr({
         enableTime: true,
