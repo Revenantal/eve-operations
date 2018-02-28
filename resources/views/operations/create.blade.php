@@ -13,7 +13,11 @@
     </div>
 </div>
 
-{!! Form::open(['action' => 'OperationsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'operation-form']) !!}
+@if( isset($operation) )
+    {!! Form::open(['action' => ['OperationsController@update', $operation->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data', 'id' => 'operation-form']) !!}
+@else
+    {!! Form::open(['action' => 'OperationsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'operation-form']) !!}
+@endif
     <div class="container mb-3">
         <div class="card mb-3">
             <div class="card-body">
@@ -22,7 +26,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             {{Form::label('name', 'Operation Name')}}<span class="text-danger">*</span>
-                            {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Imicus Doctrine'])}}
+                            {{Form::text('name', (isset($operation)) ? $operation->name : '', ['class' => 'form-control', 'placeholder' => 'Imicus Doctrine'])}}
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -36,22 +40,22 @@
                                     <img src="{{URL::asset('/images/no-fc.png')}}" id="organizer-portrait" class="rounded img-fluid"/>
                                 </div>
                                 <div class="col">
-                                    {{Form::text('organizer-name', '', ['class' => 'form-control username', 'placeholder' => 'Username'])}}
+                                    {{Form::text('organizer-name', (isset($operation)) ? $operation->assignedTo->character_name : '', ['class' => 'form-control username', 'placeholder' => 'Username'])}}
                                 </div>
                             </div>
-                            {{ Form::hidden('assigned_to', '', array('id' => 'assigned_to')) }}
+                            {{ Form::hidden('assigned_to', (isset($operation)) ? $operation->assignedTo->character_id : '', array('id' => 'assigned_to')) }}
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             {{Form::label('operation_type', 'Operation Type')}}<span class="text-danger">*</span>
                             {{Form::select('operation_type', [
-                                                'structure_off' => 'Structure Offensive', 
+                                                'structure_off' => 'Structure Offensive',
                                                 'structure_def' => 'Structure Defensive',
                                                 'roam'          => 'Roam',
                                                 'fun'           => 'Fun Fleet',
                                                 'moon_mining'   => 'Moon Mining'],
-                                                null, ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
+                                                 (isset($operation)) ? $operation->type : '', ['class' => 'form-control', 'placeholder' => 'Select Type'])}}
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -59,7 +63,7 @@
                             {{Form::label('operation_at', 'Operation Form Up')}}<span class="text-danger">*</span> <small>(EVE Time)</small>
                             <div class="form-row d-flex date">
                                 <div class="col-lg-5 align-items-stretch">
-                                    {{Form::text('operation_at', '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Date and Time', 'data-id' => 'datetime'])}}
+                                    {{Form::text('operation_at', (isset($operation)) ? $operation->operation_at : '', ['class' => 'flatpickr form-control', 'placeholder' => 'Select Date and Time', 'data-id' => 'datetime'])}}
                                 </div>
                                 <div class="col-lg-1 text-center align-items-stretch align-self-center">
                                     OR
@@ -93,7 +97,7 @@
                                                 'general'   => 'General',
                                                 'strat'     => 'Strategic Operation',
                                                 'cta'       => 'Call To Arms' ],
-                                                null, ['class' => 'form-control'])}}
+                                                (isset($operation)) ? $operation->attribute('priority') : '', ['class' => 'form-control'])}}
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -102,7 +106,7 @@
                             {{Form::select('attr_srp', [
                                                 false   => 'Denied',
                                                 true     => 'Approved' ],
-                                                null, ['class' => 'form-control'])}}
+                                                (isset($operation)) ? $operation->attribute('srp') : '', ['class' => 'form-control'])}}
                         </div>
                     </div>
                 </div>
@@ -119,9 +123,9 @@
     </div>
 
     <div class="container mb-3">
-        {{Form::submit('Create Operation', ['class'=>'btn btn-primary'])}}
+        {{Form::submit((isset($operation)) ? 'Update Operation' : 'Create Operation', ['class'=>'btn btn-primary'])}}
     </div>
-    
+
 
 {!! Form::close() !!}
 

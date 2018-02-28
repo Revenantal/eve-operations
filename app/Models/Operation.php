@@ -54,9 +54,24 @@ class Operation extends Model
         return $this->operationAttributes->keyBy('name');
     }
 
+    /**
+     * @param $name - This can be the full name of the attribute, 'attr_priority' or just 'priority'.
+     * @return string - returns the value of the attribute
+     */
+    public function attribute($name) {
+        if (substr($name,0,5) != 'attr_') {
+            $name = 'attr_' . $name;
+        }
+
+        $attribute = OperationAttribute::where(['name' => $name, 'operation_id' => $this->id])->first();
+        if ($attribute) {
+            return $attribute->value;
+        }
+        return '';
+    }
+
     public function icons() {
         $icons = [];
-        $attributes = $this->keyedAttributes();
         
         if (!empty($attributes['attr_priority'])) {
             switch($attributes['attr_priority']) {
@@ -72,9 +87,10 @@ class Operation extends Model
             }
             $icons['attr_priority'] = $icon;
         }
-                               
-        if ($attributes['attr_srp']) {
-            $icons['attr_srp'] = ['image' => 'srp.png', 'title' => 'SRP Approved'];
+        if (!empty($attributes['attr_srp'])) {
+            if ($attributes['attr_srp']) {
+                $icons['attr_srp'] = ['image' => 'srp.png', 'title' => 'SRP Approved'];
+            }
         }
 
         if (!empty($this->type)) {

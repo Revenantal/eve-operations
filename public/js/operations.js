@@ -87,6 +87,13 @@ $(function () {
         changeDetailPanel(selectedOption);
     }
 
+    //If Assigned to has a value on load
+    var $assignedTo = $('#assigned_to');
+    if ($assignedTo) {
+
+        setCharacter($assignedTo.val(), $('#organizer-name').val());
+    }
+
     // Init flatpickr
     $(".flatpickr").flatpickr({
         enableTime: true,
@@ -249,7 +256,7 @@ $(function () {
         if ($currentView.length != 0) {
             $currentView.slideUp('normal', function () {
                 $currentView.detach();
-                $currentView.appendTo($form);
+                $currentView.insertAfter($form);
                 $targetView.appendTo($detailPanel);
                 $targetView.slideDown('normal');
             });

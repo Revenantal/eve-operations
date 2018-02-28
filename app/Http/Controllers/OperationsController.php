@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Operation;
 use App\OperationAttribute;
 use App\Models\Auth\User;
+use Carbon\Carbon;
 use Conduit\Conduit;
 use Toastr;
 
@@ -50,7 +51,6 @@ class OperationsController extends Controller
      */
     public function store(Request $request)
     {
-        //https://laracasts.com/discuss/channels/laravel/laravel-validation-rules-if-field-empty-another-field-required
         $this->validate($request, [
             'name' => 'required',
             'operation_type' => 'required',
@@ -58,39 +58,14 @@ class OperationsController extends Controller
             'attr_priority' => 'required',
             'attr_srp' => 'required'
         ]);
-
+        
+        // Get User it is assigned to
         $assignedID = null;
-        // Create a new user or assign an existing user
         if ($request->input('assigned_to')) {
             $character_id = $request->input('assigned_to');
-            $assignedUser = User::firstOrNew(['character_id' => $character_id]);
-
-            if (!$assignedUser->exists) {
-                $api = new Conduit();
-                $character =  $api->characters($character_id)->get();
-                $corporation = $api->corporations($character->corporation_id)->get();
-
-                // Collect Alliance id
-                $caid = data_get($character, 'data.alliance_id');
-
-                // And then update the data in case something changed
-                $assignedUser->character_id = $character_id;
-                $assignedUser->character_name = $character->name;
-                $assignedUser->corporation_id = $character->corporation_id;
-                $assignedUser->corporation_name = $corporation->name;
-                if ($caid) {
-                    $alliance = $api->alliances($caid)->get();
-                    $assignedUser->alliance_id = $character->alliance_id;
-                    $assignedUser->alliance_name = $alliance->name;
-                } else  {
-                    $assignedUser->alliance_id = 0;
-                    $assignedUser->alliance_name = 'No Alliance';
-                }
-                $assignedUser->save();
-            }
+            $assignedUser = Self::getOrCreateUser($character_id);
             $assignedID = $assignedUser->id;
         }
-
 
         // Create Operation
         $operation = new Operation;
@@ -101,17 +76,18 @@ class OperationsController extends Controller
         $operation->created_by = auth()->user()->id;
         $operation->save();
 
+        // Assign Attributes
         foreach ($request->input() as $key => $value) {
-            if (strpos($key, 'attr_') === 0 && $value != null) {
-                $operationAttribute = new OperationAttribute;
-                $operationAttribute->operation_id = $operation->id;
-                $operationAttribute->name = $key;
-                $operationAttribute->value = $value;
-                $operationAttribute->save();
+            if (substr($key,0,5) == 'attr_' && $value != null) {
+                $attribute = new OperationAttribute;
+                $attribute->operation_id = $operation->id;
+                $attribute->name = $key;
+                $attribute->value = $value;
+                $attribute->save();
             }
         }
 
-        Toastr::success("A new operation has been added!", "New Operation");
+        Toastr::success("Operation '{$operation->name}' successfully added!", "New Operation");
         return redirect('/');
     }
 
@@ -134,7 +110,13 @@ class OperationsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $operation = Operation::find($id);
+
+        if($operation) {
+            return view('operations.create')->with('operation', $operation);
+        } else {
+            return redirect('operations/create');
+        }
     }
 
     /**
@@ -146,7 +128,49 @@ class OperationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'operation_type' => 'required',
+            'operation_at' => 'required|date|after:now',
+            'attr_priority' => 'required',
+            'attr_srp' => 'required'
+        ]);
+
+        // Get User it is assigned to
+        $assignedID = null;
+        if ($request->input('assigned_to')) {
+            $character_id = $request->input('assigned_to');
+            $assignedUser = Self::getOrCreateUser($character_id);
+            $assignedID = $assignedUser->id;
+        }
+
+        // Update Operation
+        $operation = Operation::find($id);
+        $operation->name = $request->input('name');
+        $operation->type = $request->input('operation_type');
+        $operation->assigned_to = $assignedID;
+        $operation->operation_at = $request->input('operation_at');
+        $operation->modified_by = auth()->user()->id;
+        $operation->modified_at = Carbon::now();
+        $operation->save();
+
+        // Assign Attributes
+        foreach ($request->input() as $key => $value) {
+            if (substr($key,0,5) == 'attr_') {
+                $attribute = OperationAttribute::firstOrNew(['name' => $key]);
+                if ($value == null && $attribute->exists) {
+                    $attribute->delete();
+                } elseif ($value != null) {
+                    $attribute->operation_id = $operation->id;
+                    $attribute->name = $key;
+                    $attribute->value = $value;
+                    $attribute->save();
+                }
+            }
+        }
+
+        Toastr::success("Operation '{$operation->name}' successfully updated!", "Updated Operation");
+        return redirect('/');
     }
 
     /**
@@ -161,5 +185,40 @@ class OperationsController extends Controller
         $operation->delete();
         Toastr::success("Operation deleted successfully!", "Success");
         return redirect('/');
+    }
+
+
+    /**
+     * @param $character_id the EVE character ID of the new user we wish to create
+     * @return User - The newly created or retrieved user
+     */
+    public function getOrCreateUser($character_id) {
+
+        $user = User::firstOrNew(['character_id' => $character_id]);
+        if (!$user->exists) {
+            $api = new Conduit();
+            $character =  $api->characters($character_id)->get();
+            $corporation = $api->corporations($character->corporation_id)->get();
+
+            // Collect Alliance id
+            $caid = data_get($character, 'data.alliance_id');
+
+            // And then update the data in case something changed
+            $user->character_id = $character_id;
+            $user->character_name = $character->name;
+            $user->corporation_id = $character->corporation_id;
+            $user->corporation_name = $corporation->name;
+            if ($caid) {
+                $alliance = $api->alliances($caid)->get();
+                $user->alliance_id = $character->alliance_id;
+                $user->alliance_name = $alliance->name;
+            } else  {
+                $user->alliance_id = 0;
+                $user->alliance_name = 'No Alliance';
+            }
+            $user->save();
+        }
+
+        return $user;
     }
 }

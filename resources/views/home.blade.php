@@ -18,9 +18,9 @@
                         <div class="button bg-primary" data-toggle="tooltip" title="Broadcast">
                             <i class="fas fa-fw fa-bullhorn"></i>
                         </div>
-                        <div class="button bg-warning" data-toggle="tooltip" title="Edit">
+                        <a href="{{route('operations.edit', $operation->id)}}" class="button bg-warning" data-toggle="tooltip" title="Edit">
                             <i class="fas fa-fw fa-pencil-alt"></i>
-                        </div>
+                        </a>
                         <div class="button bg-danger" data-toggle="tooltip" title="Delete" data-action="delete">
                             <i class="fas fa-fw fa-trash"></i>
                         </div>
@@ -153,7 +153,7 @@
                             <div class="col-12">
                                 Posted by {{$operation->createdBy->character_name}} on {{$operation->created_at}}
                                 @if($operation->modifiedBy)
-                                    - Modified by {{$operation->modifiedBy->character_name}} on {{$operation->modified_on}}
+                                    - Modified by {{$operation->modifiedBy->character_name}} on {{$operation->modified_at}}
                                 @endif
                             </div>
                         </div>
